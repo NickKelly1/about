@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import styles from './Curve.module.scss';
 import clsx from 'clsx';
 
@@ -7,7 +7,7 @@ export interface CurveProps {
 }
 
 export const Curve: FC<CurveProps> = (props) => {
-  const { 
+  const {
     height,
   } = props;
 
@@ -58,4 +58,4 @@ export const Curve: FC<CurveProps> = (props) => {
       </svg>
     </div>
   );
-}
+};

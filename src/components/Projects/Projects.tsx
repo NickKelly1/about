@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { IProjectable } from '../Project/copy/project.interface';
 import { Project } from '../Project/Project';
 import { Title } from '../Title/Title';
-import { Vessel } from '../Vessel/Vessel';
+import { Container } from '../Container/Container';
 import styles from './Projects.module.scss';
 
 interface ProjectsProps {
@@ -17,7 +17,7 @@ export const Projects: FC<ProjectsProps> = (props) => {
   //
 
   return (
-    <Vessel className={clsx(styles.projects, className)}>
+    <Container className={clsx(styles.projects, className)}>
       <Title className={styles.title}>
         Projects
       </Title>
@@ -30,6 +30,6 @@ export const Projects: FC<ProjectsProps> = (props) => {
           </li>
         ))}
       </ul>
-    </Vessel>
-  )
-}
+    </Container>
+  );
+};

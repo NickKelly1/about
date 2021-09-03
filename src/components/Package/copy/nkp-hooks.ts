@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { IPackageable } from './package.interface';
 
 export const nkpHooks: IPackageable = {

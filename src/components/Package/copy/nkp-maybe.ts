@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable max-len */
 import { IPackageable } from './package.interface';
 
 export const nkpMaybe: IPackageable = {

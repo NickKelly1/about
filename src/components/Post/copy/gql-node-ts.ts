@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { IPostable } from './post.interface';
 
 export const gqlNodeTs: IPostable = {

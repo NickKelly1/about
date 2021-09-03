@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import { FC } from "react";
+import clsx from 'clsx';
+import { FC } from 'react';
 import styles from './Progress.module.scss';
 
 export interface ProgressProps {
@@ -27,4 +27,4 @@ export const Progress: FC<ProgressProps> = (props) => {
       />
     </div>
   );
-}
+};

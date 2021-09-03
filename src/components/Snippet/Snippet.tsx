@@ -1,5 +1,5 @@
-import Prism from "prismjs";
-import { FC, useMemo } from "react";
+import Prism from 'prismjs';
+import { FC, useMemo } from 'react';
 import styles from './Snippet.module.scss';
 import clsx from 'clsx';
 
@@ -16,7 +16,7 @@ export const Snippet: FC<SnippetProps> = (props) => {
   const highlighted = useMemo(() => Prism.highlight(
     code,
     Prism.languages.javascript,
-    'typescript'), [code]);
+    'typescript'), [code,]);
 
   return (
     <div className={clsx(className, styles.snippet)}>
@@ -28,7 +28,7 @@ export const Snippet: FC<SnippetProps> = (props) => {
         <span className={clsx(styles.dot, styles.close)}>
         </span>
       </div>
-      <code dangerouslySetInnerHTML={{ __html: highlighted }} />
+      <code dangerouslySetInnerHTML={{ __html: highlighted, }} />
     </div>
   );
-}
+};

@@ -38,4 +38,4 @@ export const Post: FC<PostProps> = (props) => {
       />
     </article>
   );
-}
+};

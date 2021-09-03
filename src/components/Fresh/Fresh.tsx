@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import { FC } from "react";
+import clsx from 'clsx';
+import { FC } from 'react';
 import styles from './Fresh.module.scss';
 
 interface IFreshProps {
@@ -17,9 +17,9 @@ export const Fresh: FC<IFreshProps> = (props) => {
   return (
     <span
       className={clsx(styles.fresh, className)}
-      style={{ backgroundColor }}
+      style={{ backgroundColor, }}
     >
       {children}
     </span>
   );
-}
+};

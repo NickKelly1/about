@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { IProjectable } from './project.interface';
 
 export const ciPortal: IProjectable = {

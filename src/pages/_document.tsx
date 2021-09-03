@@ -1,19 +1,10 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-
-// import '../assets/fonts/CascadiaCode.woff2';
-// import '../assets/fonts/CascadiaCodeItalic.woff2';
-// import '../assets/fonts/CascadiaCodePL.woff2';
-// import '../assets/fonts/CascadiaCodePLItalic.woff2';
-
-// import '../assets/fonts/CascadiaMono.woff2';
-// import '../assets/fonts/CascadiaMonoItalic.woff2';
-// import '../assets/fonts/CascadiaMonoPL.woff2';
-// import '../assets/fonts/CascadiaMonoPLItalic.woff2';
+/* eslint-disable max-len */
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps, };
   }
 
   render() {
@@ -47,4 +38,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument
+export default MyDocument;

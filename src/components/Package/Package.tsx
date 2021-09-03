@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC } from 'react';
 import styles from './Package.module.scss';
 import clsx from 'clsx';
-import { Snippet } from "../Snippet/Snippet";
-import { IPackageable } from "./copy/package.interface";
-import { Fresh } from "../Fresh/Fresh";
+import { Snippet } from '../Snippet/Snippet';
+import { IPackageable } from './copy/package.interface';
+import { Fresh } from '../Fresh/Fresh';
 
 export interface PackageProps {
   pkg: IPackageable;
@@ -17,12 +17,12 @@ export const Package: FC<PackageProps> = (props) => {
     name,
     date,
     description,
-    snippet
+    snippet,
   } = pkg;
 
   return (
     <article className={styles.package}>
-      <h3 className={clsx("h3", styles.name)}>
+      <h3 className={clsx('h3', styles.name)}>
         <Fresh>
           {name}
         </Fresh>
@@ -39,5 +39,5 @@ export const Package: FC<PackageProps> = (props) => {
       </div>
       <Snippet className={styles.snippet} code={snippet} />
     </article>
-  )
-}
+  );
+};

@@ -13,5 +13,5 @@ export const Title: FC<TitleProps> = (props) => {
     <h3 className={clsx('h3', 'typewriter', styles.title, className)}>
       {children}
     </h3>
-  )
-}
+  );
+};

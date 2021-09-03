@@ -1,24 +1,9 @@
 @import '~normalize.css';
 @import '~prismjs/themes/prism-dark.css';
+@import './fonts.scss';
 @import './code.scss';
 @import './container.scss';
 @import './spacing.scss';
-
-
-// import '../assets/fonts/CascadiaCode.woff2';
-// import '../assets/fonts/CascadiaCodeItalic.woff2';
-// import '../assets/fonts/CascadiaCodePL.woff2';
-// import '../assets/fonts/CascadiaCodePLItalic.woff2';
-
-// import '../assets/fonts/CascadiaMono.woff2';
-// import '../assets/fonts/CascadiaMonoItalic.woff2';
-// import '../assets/fonts/CascadiaMonoPL.woff2';
-// import '../assets/fonts/CascadiaMonoPLItalic.woff2';
-
-@font-face {
-  font-family: 'CascadiaCode';
-  src: url('../assets/fonts/CascadiaCode.woff2');
-}
 
 :root {
   // theme
@@ -30,6 +15,7 @@
   --bg-code: #282828;
   --bg-code-topbar: #A4A4A4;
   --bg-primary: #C7AA8B;
+  --bg-primary-dark: #be966a;
 
   // html
   --color-html: #ffa500;
@@ -72,8 +58,10 @@ body {
 
 code {
   font-family:
-    'CascadiaMono',
-    'CascadiaCode',
+    CascadiaPLCode,
+    CascadiaCode,
+    CascadiaPLMono,
+    CascadiaMono,
     'Courier Prime',
     'Courier New',
     Courier,

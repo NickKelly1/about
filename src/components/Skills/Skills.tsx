@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC } from 'react';
 import styles from './Skills.module.scss';
 import clsx from 'clsx';
-import { Progress } from "../Progress/Progress";
-import { COLOR } from "../../constants";
-import { Title } from "../Title/Title";
-import { Vessel } from "../Vessel/Vessel";
+import { Progress } from '../Progress/Progress';
+import { COLOR } from '../../constants';
+import { Title } from '../Title/Title';
+import { Container } from '../Container/Container';
 
 export interface SkillsProps {
   className?: string,
@@ -17,12 +17,12 @@ interface ISkill {
   color: string,
 }
 const skills: ISkill[] = [
-  { name: 'JavaScript', score: 90, color: COLOR.JS },
+  { name: 'JavaScript', score: 90, color: COLOR.JS, },
   { name: 'TypeScript', score: 90, color: COLOR.TS, },
   { name: 'CSS', score: 60, color: COLOR.CSS, },
-  { name: 'Laravel', score: 40, color: COLOR.PHP },
-  { name: 'PHP', score: 30, color: COLOR.PHP },
-]
+  { name: 'Laravel', score: 40, color: COLOR.PHP, },
+  { name: 'PHP', score: 30, color: COLOR.PHP, },
+];
 
 export const Skills: FC<SkillsProps> = (props) => {
   const {
@@ -30,7 +30,7 @@ export const Skills: FC<SkillsProps> = (props) => {
   } = props;
 
   return (
-    <Vessel className={clsx(styles.skills, className)}>
+    <Container className={clsx(styles.skills, className)}>
       <Title>
         Skills
       </Title>
@@ -49,6 +49,6 @@ export const Skills: FC<SkillsProps> = (props) => {
           </li>
         ))}
       </ul>
-    </Vessel>
+    </Container>
   );
-}
+};

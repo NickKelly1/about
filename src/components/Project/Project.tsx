@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import React, { FC } from "react";
-import { Description } from "../Description/Description";
-import { Fresh } from "../Fresh/Fresh";
-import { IProjectable } from "./copy/project.interface";
+import clsx from 'clsx';
+import React, { FC } from 'react';
+import { Description } from '../Description/Description';
+import { Fresh } from '../Fresh/Fresh';
+import { IProjectable } from './copy/project.interface';
 import styles from './Project.module.scss';
 
 export interface ProjectProps {
@@ -11,7 +11,7 @@ export interface ProjectProps {
 
 export const Project: FC<ProjectProps> = (props) => {
   const {
-    project
+    project,
   } = props;
 
   const {
@@ -39,5 +39,5 @@ export const Project: FC<ProjectProps> = (props) => {
       />
 
     </article>
-  )
-}
+  );
+};

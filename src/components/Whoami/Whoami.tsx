@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 import styles from './Whoami.module.scss';
 import clsx from 'clsx';
-import { Vessel } from "../Vessel/Vessel";
+import { Container } from '../Container/Container';
 
 export interface WhoamiProps {
   className?: string;
@@ -12,13 +12,13 @@ const statement = `
 I’m a web developer based in the US.
 
 I love working in JavaScript and TypeScript to useful useful web applications.
-`.trim()
+`.trim();
 
 export const Whoami: FC<WhoamiProps> = (props) => {
   const { className, } = props;
 
   return (
-    <Vessel className={clsx(styles.whoami, className)}>
+    <Container className={clsx(styles.whoami, className)}>
       <h1 className={clsx('h1', styles.name)}>
         {name}
       </h1>
@@ -29,6 +29,6 @@ export const Whoami: FC<WhoamiProps> = (props) => {
           </p>
         ))}
       </div>
-    </Vessel>
-  )
-}
+    </Container>
+  );
+};

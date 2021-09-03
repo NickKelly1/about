@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from './index.module.scss'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import styles from './index.module.scss';
 import { Package } from '../components/Package/Package';
 import { packages } from '../components/Package/copy';
 import { Whoami } from '../components/Whoami/Whoami';
@@ -20,7 +20,7 @@ interface SectionProps {
   paddingBottom?: number;
   paddingTop?: number;
   className?: string;
-};
+}
 
 const Section: FC<SectionProps> = (props) => {
   const {
@@ -44,7 +44,7 @@ const Section: FC<SectionProps> = (props) => {
       </div>
     </section>
   );
-}
+};
 
 const Home: NextPage = () => {
   return (
@@ -113,7 +113,7 @@ const Home: NextPage = () => {
           />
         </Section>
 
-      
+
         <Section
           curve={100}
           paddingBottom={190}
@@ -125,7 +125,7 @@ const Home: NextPage = () => {
 
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import { FC, useMemo } from "react";
+import clsx from 'clsx';
+import { FC, useMemo } from 'react';
 import styles from './Description.module.scss';
 
 export interface DescriptionProps {
@@ -13,7 +13,7 @@ export const Description: FC<DescriptionProps> = (props) => {
     className,
   } = props;
 
-  const lines = useMemo(() => text.trim().split('\n'), [text]);
+  const lines = useMemo(() => text.trim().split('\n'), [text,]);
 
   return (
     <div className={clsx(styles.description, className)}>
@@ -23,5 +23,5 @@ export const Description: FC<DescriptionProps> = (props) => {
         </p>
       ))}
     </div>
-  )
-}
+  );
+};
