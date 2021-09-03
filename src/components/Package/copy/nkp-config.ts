@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpConfig: IPackageable = {
   name: '@nkp/config',
@@ -19,5 +19,5 @@ const Env = parse({
 // TypeScript knows the correct type of Env
 
 // Env: { PORT: number, HOST: string }
-`.trim()
+`.trim(),
 };

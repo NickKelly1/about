@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Fresh } from "../Fresh/Fresh";
-import { Title } from "../Title/Title";
-import { Vessel } from "../Vessel/Vessel";
+import { FC } from 'react';
+import { Fresh } from '../Fresh/Fresh';
+import { Title } from '../Title/Title';
+import { Vessel } from '../Vessel/Vessel';
 import styles from './ContactMe.module.scss';
 
 export interface ContactMeProps {
@@ -35,4 +35,4 @@ export const ContactMe: FC<ContactMeProps> = (props) => {
       </form>
     </Vessel>
   );
-}
+};

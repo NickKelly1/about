@@ -1,4 +1,4 @@
-import { IProjectable } from "./project.interface";
+import { IProjectable } from './project.interface';
 
 export const ciFlux: IProjectable = {
   title: 'Ci Flux',
@@ -8,4 +8,4 @@ Ci Flux is a streaming ETL tool to that generates near-live aggregated reporting
 
 TypeScript, integrations, GraphQL, SocketIO
   `.trim(),
-}
+};

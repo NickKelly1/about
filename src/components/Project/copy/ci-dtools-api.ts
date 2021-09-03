@@ -1,4 +1,4 @@
-import { IProjectable } from "./project.interface";
+import { IProjectable } from './project.interface';
 
 export const ciDtoolsAPI: IProjectable = {
   title: 'Ci D-Tools API',
@@ -9,6 +9,6 @@ The Ci D-Tools API is a back-end web application wrapping the database for the t
 The API and its consumers leverage GraphQL’s API layer and end-to-end type safety with with TypeScript and GraphQL Code Generator to ensure data integrity across versions of the third party software when the underlying schema changes.
 
 JavaScript, React, SocketIO, ExpressJS, JSDoc
-`.trim()
+`.trim(),
   //
-}
+};

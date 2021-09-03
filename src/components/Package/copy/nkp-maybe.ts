@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpMaybe: IPackageable = {
   name: '@nkp/maybe',
@@ -17,5 +17,5 @@ maybe
   .filter((value) => value.startsWith(‘index’)
   .map((value) => \`public/\${value}\`)
   .unwrap()
-`.trim()
+`.trim(),
 };

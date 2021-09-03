@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpIterable: IPackageable = {
   name: '@nkp/iterable',
@@ -67,5 +67,5 @@ collection.mapSome((file) => Maybe
  *    },
  * ]
  */
-`.trim()
+`.trim(),
 };

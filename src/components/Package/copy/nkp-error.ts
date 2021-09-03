@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpError: IPackageable = {
   name: '@nkp/error',
@@ -10,5 +10,5 @@ TODO
 
   snippet: `
 TODO
-`.trim()
+`.trim(),
 };

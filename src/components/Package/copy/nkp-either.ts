@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpEither: IPackageable = {
   name: '@nkp/either',
@@ -16,5 +16,5 @@ const either = Either.right(‘index.js’);
 maybe
   .map((value) => \`public/\${value}\`)
   .unwrapRight()
-`.trim()
+`.trim(),
 };

@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpHooks: IPackageable = {
   name: '@nkp/hooks',
@@ -15,5 +15,5 @@ import {
   useHaveEffectsMounted,
   useOnResize,
 } from ‘@nkp/hooks’;
-`.trim()
+`.trim(),
 };

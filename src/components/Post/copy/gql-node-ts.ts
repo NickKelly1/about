@@ -1,4 +1,4 @@
-import { IPostable } from "./post.interface";
+import { IPostable } from './post.interface';
 
 export const gqlNodeTs: IPostable = {
   title: 'Writing a GraphQL TypeScript Server for NodeJS',

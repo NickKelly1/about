@@ -1,4 +1,4 @@
-import { IPostable } from "./post.interface";
+import { IPostable } from './post.interface';
 
 export const jsDarkArts: IPostable = {
   title: 'JavaScript Inheritance: The Dark Arts',

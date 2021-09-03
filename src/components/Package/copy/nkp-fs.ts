@@ -1,4 +1,4 @@
-import { IPackageable } from "./package.interface";
+import { IPackageable } from './package.interface';
 
 export const nkpFs: IPackageable = {
   name: '@nkp/fs',
@@ -24,5 +24,5 @@ const structure = fsn.parse(__dirname, [
 ]);
 
 await fsn.write(structure);
-`.trim()
+`.trim(),
 };

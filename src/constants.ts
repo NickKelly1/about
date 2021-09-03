@@ -26,4 +26,4 @@ export const COLOR = {
 
   // php
   PHP: 'var(--color-php)',
-}
+};
