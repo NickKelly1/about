@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "about",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nkp/iterable": "0.0.32",
+    "clsx": "^1.1.1",
+    "graphql": "^15.5.1",
     "next": "11.1.0",
+    "prismjs": "^1.24.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.16.6",
     "@types/react": "17.0.19",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.38.2",
     "typescript": "4.4.2"
   }
 }

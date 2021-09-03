@@ -1,0 +1,26 @@
+.token {
+
+  &.punctuation {
+
+  }
+
+  &.keyword {
+    color: #db7420;
+  }
+
+  &.operator {
+
+  }
+
+  &.function {
+    color: #65C1F4;
+  }
+
+  &.string {
+    color: #53c77a;
+  }
+
+  &.parameter {
+    //
+  }
+}

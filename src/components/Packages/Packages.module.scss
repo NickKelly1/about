@@ -1,0 +1,9 @@
+.packages {
+  //
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    list-style: none;
+  }
+}

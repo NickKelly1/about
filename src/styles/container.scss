@@ -1,0 +1,71 @@
+@import './variables';
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 540px; }
+  @media only screen and (min-width: $md) { width: 720px; }
+  @media only screen and (min-width: $lg) { width: 960px; }
+  @media only screen and (min-width: $xl) { width: 1140px; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-sm {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 540px; }
+  @media only screen and (min-width: $md) { width: 720px; }
+  @media only screen and (min-width: $lg) { width: 960px; }
+  @media only screen and (min-width: $xl) { width: 1140px; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-md {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 100% }
+  @media only screen and (min-width: $md) { width: 720px; }
+  @media only screen and (min-width: $lg) { width: 960px; }
+  @media only screen and (min-width: $xl) { width: 1140px; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-lg {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 100% }
+  @media only screen and (min-width: $md) { width: 100%; }
+  @media only screen and (min-width: $lg) { width: 960px; }
+  @media only screen and (min-width: $xl) { width: 1140px; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-xl {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 100% }
+  @media only screen and (min-width: $md) { width: 100%; }
+  @media only screen and (min-width: $lg) { width: 100%; }
+  @media only screen and (min-width: $xl) { width: 1140px; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-xxl {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 100% }
+  @media only screen and (min-width: $md) { width: 100%; }
+  @media only screen and (min-width: $lg) { width: 100%; }
+  @media only screen and (min-width: $xl) { width: 100%; }
+  @media only screen and (min-width: $xxl) { width: 1320px; }
+}
+
+.container-fluix {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 100% }
+  @media only screen and (min-width: $md) { width: 100%; }
+  @media only screen and (min-width: $lg) { width: 100%; }
+  @media only screen and (min-width: $xl) { width: 100%; }
+  @media only screen and (min-width: $xxl) { width: 100%; }
+}

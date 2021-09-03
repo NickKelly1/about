@@ -1,0 +1,12 @@
+.projects {
+  .title {
+    text-align: center;
+  }
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+  }
+}

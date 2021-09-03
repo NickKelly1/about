@@ -1,0 +1,57 @@
+@import './variables';
+
+.m-1 { margin: $spacing-1; }
+.m-2 { margin: $spacing-2; }
+.m-3 { margin: $spacing-3; }
+
+.mx-1 { margin: 0 $spacing-1; }
+.mx-2 { margin: 0 $spacing-2; }
+.mx-3 { margin: 0 $spacing-3; }
+
+.my-1 { margin: $spacing-1 0; }
+.my-2 { margin: $spacing-2 0; }
+.my-3 { margin: $spacing-3 0; }
+
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+
+.mr-1 { margin-right: $spacing-1; }
+.mr-2 { margin-right: $spacing-2; }
+.mr-3 { margin-right: $spacing-3; }
+
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+
+.ml-1 { margin-left: $spacing-1; }
+.ml-2 { margin-left: $spacing-2; }
+.ml-3 { margin-left: $spacing-3; }
+
+.p-1 { padding: $spacing-1; }
+.p-2 { padding: $spacing-2; }
+.p-3 { padding: $spacing-3; }
+
+.px-1 { padding: 0 $spacing-1; }
+.px-2 { padding: 0 $spacing-2; }
+.px-3 { padding: 0 $spacing-3; }
+
+.py-1 { padding: $spacing-1 0; }
+.py-2 { padding: $spacing-2 0; }
+.py-3 { padding: $spacing-3 0; }
+
+.pt-1 { padding-top: $spacing-1; }
+.pt-2 { padding-top: $spacing-2; }
+.pt-3 { padding-top: $spacing-3; }
+
+.pr-1 { padding-right: $spacing-1; }
+.pr-2 { padding-right: $spacing-2; }
+.pr-3 { padding-right: $spacing-3; }
+
+.pb-1 { padding-bottom: $spacing-1; }
+.pb-2 { padding-bottom: $spacing-2; }
+.pb-3 { padding-bottom: $spacing-3; }
+
+.pl-1 { padding-left: $spacing-1; }
+.pl-2 { padding-left: $spacing-2; }
+.pl-3 { padding-left: $spacing-3; }

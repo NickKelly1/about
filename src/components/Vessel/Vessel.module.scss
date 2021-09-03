@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.vessel {
+  margin: 0 auto;
+  width: 100%;
+  @media only screen and (min-width: $sm) { width: 540px; }
+  @media only screen and (min-width: $md) { width: 540px; }
+  @media only screen and (min-width: $lg) { width: 540px; }
+  @media only screen and (min-width: $xl) { width: 540px; }
+  @media only screen and (min-width: $xxl) { width: 540px; }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}

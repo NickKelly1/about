@@ -1,0 +1,16 @@
+.fresh {
+  $space: 60px;
+  display: block;
+
+  position: relative;
+  margin-top: $space;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 8px;
+    margin-top: -$space;
+    background-color: var(--ph-fresh-color);
+  }
+}
