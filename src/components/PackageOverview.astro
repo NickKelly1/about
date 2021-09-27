@@ -1,0 +1,55 @@
+---
+import { TagList } from '../components/TagList';
+import { Markdown } from 'astro/components';
+
+interface Props {
+  pkg: PackageMarkdownFrontmatter;
+}
+
+const {
+  pkg,
+} = Astro.props as Props;
+
+---
+<style lang="scss">
+  .package {
+    position: relative;
+    padding-top: var(--s-3);
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      background-color: rgb(var(--c-gold-1));
+      width: 32px;
+      height: 8px;
+    }
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: var(--s-2);
+
+    .date {
+      color: rgb(var(--c-gray-1));
+      font-style: italic;
+    }
+
+    .company {
+      font-weight: bold;
+    }
+  }
+</style>
+
+<article class="package">
+  <h3>{pkg.name}</h3>
+  <div class="date">{pkg.date}</div>
+  <div>{pkg.description}</div>
+  {pkg.snippet && (
+    <div class="markdown">
+      // <Markdown content={pkg.snippet} />
+      <Markdown>{pkg.snippet}</Markdown>
+    </div>
+  )}
+  <a class="as-flex-start" href={pkg.url}>View More</a>
+  <!-- <slot /> -->
+</article>

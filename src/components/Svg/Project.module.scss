@@ -1,0 +1,52 @@
+@import '../../scss/variables';
+
+.project {
+  // css variables supplied by js
+  --sw: 4;
+  --br: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+  stroke-opacity: 1;
+  stroke-dashoffset: 0;
+
+  .word {
+    stroke-width: var(--sw);
+    fill: none;
+  }
+
+  .file {
+    stroke-width: var(--sw);
+  }
+
+  rect {
+    stroke: rgb(var(--c-gold-3));
+    fill: none;
+  }
+
+  .border {
+    stroke: rgb(var(--c-gold-3));
+    stroke-width: var(--br);
+    fill: none;
+  }
+
+  .separator {
+    stroke: rgb(var(--c-gold-3));
+    stroke-width: var(--br);
+    stroke-linecap: square;
+    stroke-linejoin: square;
+    fill: none;
+  }
+
+  .screen {
+    fill: rgb(var(--c-dark-blue-3));
+  }
+
+  @each $color in $colors {
+    .#{$color} {
+      stroke: rgb(var(--c-#{$color}-1));
+    }
+  }
+}

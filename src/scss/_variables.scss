@@ -1,0 +1,52 @@
+// (b)reakpoints - can use in media queries with env(--b-...)
+$xs: 368px;
+$md: 568px;
+
+
+$colors:
+  'gold',
+  'green',
+  'orange',
+  'blue',
+  'pink',
+  'red',
+  'purple',
+  'yellow',
+  'black',
+  'dark-blue',
+  'white',
+  'gray'
+;
+
+$textual-colors:
+  'green',
+  'orange',
+  'blue',
+  'pink',
+  'red',
+  'purple',
+  'yellow'
+;
+
+$tag-colors:
+  'js',
+  'javascript',
+  'ts',
+  'typescript',
+  'html',
+  'css',
+  'php',
+  'react',
+  'reactjs',
+  'node',
+  'nodejs',
+  'laravel',
+  'linux',
+  'express',
+  'graphql',
+  'postgres',
+  'postgresql',
+  'mysql',
+  'aws',
+  'socketio',
+;

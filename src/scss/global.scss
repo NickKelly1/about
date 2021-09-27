@@ -1,0 +1,222 @@
+@import 'normalize.css';
+// @import 'prismjs/themes/prism-dark.css';
+@import './fonts';
+@import './variables';
+@import './reset';
+@import './typography';
+@import './utils';
+@import './functions';
+@import './code';
+
+// Tokens
+:root {
+  --animation-speed-1: 15s;
+  --animation-speed-2: 20s;
+  --animation-speed-3: 25s;
+  --animation-speed-4: 30s;
+  --animation-speed-5: 35s;
+  --animation-speed-6: 40s;
+  --animation-speed-7: 45s;
+  --animation-speed-8: 50s;
+  --animation-speed-9: 55s;
+  --animation-speed-10: 60s;
+  --animation-speed-11: 65s;
+  --animation-speed-12: 70s;
+
+  --transition-speed: 300ms;
+
+  // (c)olor
+  --c-gold-1: 245, 211, 175;
+  --c-gold-2: 194, 162, 128;
+  --c-gold-3: 175, 134, 90;
+
+  --c-green-1: 158, 242, 203;
+  --c-green-2: 69, 231, 156;
+  --c-green-3: 22, 169, 101;
+
+  --c-orange-1: 255, 183, 163;
+  --c-orange-2: 255, 125, 89;
+  --c-orange-3: 255, 98, 54;
+
+  --c-blue-1: 70, 180, 255;
+  --c-blue-2: 15, 157, 255;
+  --c-blue-3: 0, 131, 222;
+
+  --c-pink-1: 255, 184, 217;
+  --c-pink-2: 255, 121, 183;
+  --c-pink-3: 255, 62, 151;
+
+  --c-red-1: 255, 148, 156;
+  --c-red-2: 255, 107, 117;
+  --c-red-3: 255, 86, 98;
+
+  --c-purple-1: 217, 168, 255;
+  --c-purple-2: 192, 112, 255;
+  --c-purple-3: 180, 81, 255;
+
+  --c-yellow-1: 255, 253, 166;
+  --c-yellow-2: 255, 251, 104;
+  --c-yellow-3: 255, 250, 8;
+
+  --c-black-1: 27, 27, 27;
+  --c-black-2: 18, 18, 18;
+  --c-black-3: 0, 0, 0;
+
+  --c-dark-blue-1: 15, 27, 89;
+  --c-dark-blue-2: 7, 14, 46;
+  --c-dark-blue-3: 5, 9, 29;
+
+  --c-white-1: 255, 255, 255;
+  --c-white-2: 223, 223, 223;
+  --c-white-3: 190, 190, 190;
+
+  --c-gray-1: 144, 170, 183;
+  --c-gray-2: 112, 145, 162;
+  --c-gray-3: 95, 127, 145;
+
+  --c-anchor: 118, 193, 243;
+  --c-anchor-visited: 229, 198, 253;
+
+  --c-js: var(--c-yellow-1);
+  --c-javascript: var(--c-yellow-1);
+  --c-ts: var(--c-blue-3);
+  --c-typescript: var(--c-blue-3);
+  --c-html: var(--c-orange-2);
+  --c-css: var(--c-blue-3);
+  --c-php: var(--c-purple-1);
+  --c-node: var(--c-green-2);
+  --c-nodejs: var(--c-green-2);
+  --c-react: var(--c-blue-1);
+  --c-reactjs: var(--c-blue-1);
+  --c-laravel: var(--c-red-3);
+  --c-linux: var(--c-purple-2);
+  --c-gql: var(--c-purple-1);
+  --c-graphql: var(--c-purple-1);
+  --c-express: var(--c-yellow-3);
+  --c-expressjs: var(--c-purple-3);
+  --c-postgres: var(--c-purple-1);
+  --c-postgresql: var(--c-purple-3);
+  --c-mysql: var(--c-blue-2);
+  --c-aws: var(--c-red-1);
+  --c-socketio: var(--c-yellow-2);
+
+  --markdown-line-gap: var(--s-1);
+
+  font-size: 16px;
+
+  // (s)pacing
+  --s-1: 0.5rem;
+  --s-2: 1.0rem;
+  --s-3: 1.5rem;
+  --s-4: 2.0rem;
+  --s-5: 2.5rem;
+  --s-6: 3.0rem;
+  --s-7: 3.5rem;
+  --s-8: 4.0rem;
+  --s-9: 4.5rem;
+  --s-10: 5.0rem;
+  --s-11: 5.5rem;
+  --s-12: 6.0rem;
+  --s-13: 6.5rem;
+  --s-14: 7.0rem;
+  --s-15: 7.5rem;
+  --s-16: 8.0rem;
+  --s-17: 8.5rem;
+  --s-18: 9.0rem;
+  --s-19: 9.5rem;
+  --s-20: 10.0rem;
+  --s-21: 10.5rem;
+  --s-22: 11.0rem;
+  --s-23: 11.5rem;
+  --s-24: 12.0rem;
+  --s-25: 12.5rem;
+  --s-26: 13.0rem;
+  --s-27: 13.5rem;
+  --s-28: 14.0rem;
+  --s-29: 14.5rem;
+  --s-30: 15.0rem;
+  --s-31: 15.5rem;
+  --s-32: 16.0rem;
+
+  // (f)ont
+  --f-u18: 11.390625em;
+  --f-u17: 9.950627481136905em;
+  --f-u16: 8.692673779389363em;
+  --f-u15: 7.59375em;
+  --f-u14: 6.63375165409127em;
+  --f-u13: 5.795115852926242em;
+  --f-u12: 5.0625em;
+  --f-u11: 4.422501102727513em;
+  --f-u10: 3.8634105686174953em;
+  --f-u9: 3.375em;
+  --f-u8: 2.9483340684850083em;
+  --f-u7: 2.575607045744997em;
+  --f-u6: 2.25em;
+  --f-u5: 1.9655560456566725em;
+  --f-u4: 1.7170713638299977em;
+  --f-u3: 1.5em;
+  --f-u2: 1.3103706971044482em;
+  --f-u1: 1.1447142425533319em;
+  --f-d1: 0.8735804647362989em;
+  --f-d2: 0.7631428283688879em;
+  --f-d3: 0.6666666666666666em;
+  --f-d4: 0.5823869764908659em;
+  --f-d5: 0.5087618855792586em;
+  --f-d6: 0.4444444444444444em;
+  --f-d7: 0.3882579843272439em;
+  --f-d8: 0.3391745903861724em;
+  --f-d9: 0.2962962962962963em;
+  --f-d10: 0.2588386562181626em;
+  --f-d11: 0.22611639359078162em;
+  --f-d12: 0.19753086419753085em;
+  --f-d13: 0.17255910414544176em;
+  --f-d14: 0.15074426239385438em;
+  --f-d15: 0.13168724279835392em;
+  --f-d16: 0.11503940276362785em;
+  --f-d17: 0.10049617492923625em;
+  --f-d18: 0.0877914951989026em;
+
+  --f-h1: 2em;
+  --f-h2: 1.5em;
+  --f-h3: 1.33em;
+  --f-h4: 1.25em;
+  --f-h5: 1.125em;
+  --f-h6: 1.075em;
+
+  // (t)heme
+  --t-fg: var(--c-gold-1);
+  --t-bg: var(--c-black-1);
+  --t-subdue: var(--c-gray-1);
+  --t-active: var(--c-blue-1);
+
+  color: rgb(var(--t-fg));
+  background-color: rgb(var(--t-bg));
+
+  // (f)ont (f)amily
+  --ff-h1: 'Chakra Petch', system-ui, sans-serif;
+  --ff-h2: 'Chakra Petch', system-ui, sans-serif;
+  --ff-h3: Inter, system-ui, sans-serif;
+  --ff-h4: Inter, system-ui, sans-serif;
+  --ff-h5: Inter, system-ui, sans-serif;
+  --ff-h6: Inter, system-ui, sans-serif;
+  --ff-body: Inter, system-ui, sans-serif;
+
+  // (sh)adow
+  --sh-c: rgba(0 0 0 / 18%);
+
+  --sh-sm-x: 0.5rem;
+  --sh-sm-y: 0.5rem;
+  --sh-sm-b: 0.5rem;
+
+  --sh-md-x: 1rem;
+  --sh-md-y: 1rem;
+  --sh-md-b: 1rem;
+
+  --sh-lg-x: 2rem;
+  --sh-lg-y: 2rem;
+  --sh-lg-b: 2rem;
+}
+
+.debug {
+  text-align: left;
+}

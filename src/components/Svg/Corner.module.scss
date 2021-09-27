@@ -1,0 +1,27 @@
+@import '../../scss/variables';
+
+.corner {
+  --inner: rgb(var(--c-blue-1));
+  --mid: rgb(var(--c-blue-2));
+  --outer: rgb(var(--c-blue-3));
+
+  @each $color in $colors {
+    &.#{$color} {
+      --inner: rgb(var(--c-#{$color}-1));
+      --mid: rgb(var(--c-#{$color}-2));
+      --outer: rgb(var(--c-#{$color}-3));
+    }
+  }
+
+  path {
+    &.inner {
+      fill: var(--inner);
+    }
+    &.mid {
+      fill: var(--mid);
+    }
+    &.outer {
+      fill: var(--outer);
+    }
+  }
+}

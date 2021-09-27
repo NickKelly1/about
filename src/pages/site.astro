@@ -1,0 +1,291 @@
+---
+import { Ellipse, Corner, Project as ProjectSvg, Blubber } from '../components/Svg';
+import Head from '../components/Head.astro';
+import Favicon from '../components/Favicon.astro';
+import ProjectOverview from '../components/ProjectOverview.astro';
+import PackageOverview from '../components/PackageOverview.astro';
+// import PackageOverview from '../components/PackageOverview.astro';
+import { COLORS, TEXTUAL_COLORS, } from '../utils/colors.js';
+
+const projectsOrPackages = Astro.fetchContent<PackageMarkdownFrontmatter | ProjectMarkdownFrontmatter>('./**/*.md');
+
+const projects = projectsOrPackages.filter(pop => /[\\/]projects[\\/][^./]*\.md$/.test(pop.file.pathname)) as ProjectMarkdownFrontmatter[];
+const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$/.test(pop.file.pathname)) as PackageMarkdownFrontmatter[];
+
+---
+
+<html lang="en">
+  <head>
+    <Head />
+    <Favicon />
+    <title>Nick Kelly - Developer</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src={Astro.resolve('../scripts/home.js')} type="module"></script>
+    <style lang="scss">
+      @import '../scss/variables';
+
+      $main-y-padding: var(--s-3);
+
+      main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        max-width: min(95%, 30rem);
+        padding: var(--s-8) var(--s-4);
+        margin-bottom: var(--s-32);
+
+        .title {
+          font-size: var(--f-u5);
+
+          @media only screen and (min-width: $xs) {
+            font-size: var(--f-u8);
+          }
+
+          text-align: center;
+          margin-bottom: var(--s-8);
+
+          hr {
+            border-color: rgb(var(--c-gold-2));
+          }
+        }
+      }
+
+      #me {
+        min-height: min(600px, calc(100vh - 2 * #{$main-y-padding}));
+        position: relative;
+        gap: var(--s-4);
+
+        nav ul {
+          display: flex;
+          gap: var(--s-2);
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-corner-tr {
+          position: absolute;
+          top: 0;
+          right: 0;
+          max-height: 125px;
+        }
+
+        .hero-corner-bl {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          max-height: 125px;
+          transform: rotate(180deg);
+        }
+      }
+
+      .skills {
+        .name {
+          margin: var(--s-1);
+        }
+
+        .bar {
+          position: relative;
+          background-color: rgb(var(--c-dark-blue-1));
+          height: 1em;
+          width: 100%;
+
+          span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+          }
+        }
+
+        .list {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: var(--s-3);
+
+          li {
+            width: 100%;
+          }
+        }
+      }
+
+      #languages {
+        //
+      }
+
+      #technologies {
+        //
+      }
+
+      .overview-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-11);
+      }
+
+      #projects {
+        //
+      }
+
+      #packages {
+        //
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- about me -->
+      <section id="me" class="card">
+        <h1>Hey, I'm Nick</h1>
+        <p>Web Developer with 3 years experience building applications for business</p>
+        <p>Based in Los Angeles, CA</p>
+        <div><a href="#">Hire Me</a></div>
+        <nav>
+          <ul>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#technologies">Technologies</a></li>
+            <li><a href="#projects">Featured Projects</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#posts">Posts</a></li>
+          </ul>
+        </nav>
+        <Corner class="hero-corner-tr" color="orange" />
+        <Corner class="hero-corner-bl" color="green" />
+      </section>
+
+      <!-- skills -->
+      <section id="languages" class="skills card">
+        <h2 class="title">
+          Languages
+          <hr />
+        </h2>
+        <ul class="list">
+          <li>
+            <div class="name">JavaScript</div>
+            <div class="bar"><span class="bg-js" style="width: 95%;" /></div>
+          </li>
+          <li>
+            <div class="name">TypeScript</div>
+            <div class="bar"><span class="bg-ts" style="width: 95%;" /></div>
+          </li>
+          <li>
+            <div class="name">HTML</div>
+            <div class="bar"><span class="bg-html" style="width: 80%;" /></div>
+          </li>
+          <li>
+            <div class="name">CSS</div>
+            <div class="bar"><span class="bg-css" style="width: 70%;" /></div>
+          </li>
+          <li>
+            <div class="name">PHP</div>
+            <div class="bar"><span class="bg-php" style="width: 50%;" /></div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="technologies" class="skills card">
+        <h2 class="title">
+          Technologies
+          <hr />
+        </h2>
+        <ul class="list">
+          <li>
+            <div class="name">NodeJS</div>
+            <div class="bar"><span class="bg-node" style="width: 90%;" /></div>
+          </li>
+          <li>
+            <div class="name">React</div>
+            <div class="bar"><span class="bg-react" style="width: 80%;" /></div>
+          </li>
+          <li>
+            <div class="name">Linux</div>
+            <div class="bar"><span class="bg-linux" style="width: 60%;" /></div>
+          </li>
+          <li>
+            <div class="name">Laravel</div>
+            <div class="bar"><span class="bg-laravel" style="width: 50%;" /></div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="projects" class="card">
+        <h2 class="title">
+          Featured Projects
+          <hr />
+        </h2>
+        <ul class="overview-list">
+          {projects.map(project => (
+            <li>
+              <ProjectOverview project={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="packages" class="card">
+        <h2 class="title">
+          Featured Packages
+          <hr />
+        </h2>
+        <ul class="overview-list">
+          {packages.map((pkg) => (
+            <li>
+              <PackageOverview pkg={pkg} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+
+    <div class="background">
+      <Ellipse
+        uniq="e1"
+        class="rotate-8"
+        style={{ position: 'absolute', left: '-40vmin', top: '-10vmin', }}
+        color="blue"
+        xpery={1.15}
+        size="100vmin"
+      />
+      <Ellipse
+        uniq="e2"
+        class="rotate-cc-8"
+        style={{ position: 'absolute', right: '-40vmin', top: '110vh', }}
+        color="orange"
+        xpery={1.15}
+        size="100vmin"
+      />
+      <Ellipse
+        uniq="e3"
+        class="rotate-8"
+        style={{ transform: 'rotate(60deg)', position: 'absolute', left: '-150px', top: '220vh', }}
+        color="red"
+        xpery={0.85}
+        size="100vmin"
+      />
+      <Ellipse
+        uniq="e4"
+        class="rotate-cc-8"
+        style={{ transform: 'rotate(-15deg)', position: 'absolute', right: '-20vmin', top: '330vh', }}
+        color="purple"
+        xpery={0.90}
+        size="100vmin"
+      />
+      <Blubber
+        uniq="b1"
+        style={{ position: 'absolute', left: '-70vmin', top: '440vh', }}
+        size="130vmin"
+      />
+    </div>
+  </body>
+</html>

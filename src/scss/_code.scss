@@ -1,0 +1,97 @@
+@use "sass:math" as math;
+
+pre[class*=language-] {
+  position: relative;
+  $height: 1.25;
+  $br: 4px;
+  $unit: rem;
+  border-radius: $br;
+  background-color: rgb(var(--c-dark-blue-3));
+  padding-top: 1rem;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: #{$height}#{$unit};
+    background-color: rgb(var(--c-gray-3));
+    content: "";
+    border-top-left-radius: $br;
+    border-top-right-radius: $br;
+  }
+
+  &::after {
+    $widthPerHeight: math.div(8.5, 3);
+
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 8px;
+    height: #{$height}#{$unit};
+    width: #{$widthPerHeight * $height}#{$unit};
+    $minimize: #F5B932;
+    $expand: #27C73F;
+    $close: #F45E54;
+    $svg: '\
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 8.5 2.5">\
+        <circle cx="1" cy="1" r="1" fill="' + $close + '"></circle>\
+        <circle cx="4" cy="1" r="1" fill="' + $minimize + '"></circle>\
+        <circle cx="7" cy="1" r="1" fill="' + $expand + '"></circle>\
+      </svg>\
+    ';
+
+    background-image: url(svg-encode($svg));
+    background-repeat: no-repeat;
+  }
+
+  code {
+    display: block;
+    overflow-x: auto;
+    padding: 1rem;
+    text-align: left;
+  }
+}
+
+code {
+  color: rgb(var(--c-gold-1));
+
+  .token {
+    &.punctuation {
+      color: rgb(var(--c-gray-1));
+    }
+
+    &.comment {
+      color: rgb(var(--c-gray-3));
+    }
+
+    &.keyword {
+      color: rgb(var(--c-blue-1));
+    }
+
+    &.operator {
+      // font-weight: bold;
+      color: rgb(var(--c-gold-1));
+    }
+
+    &.function {
+      color: rgb(var(--c-purple-1));
+    }
+
+    &.string {
+      color: rgb(var(--c-green-1));
+    }
+
+    &.number {
+      color: rgb(var(--c-red-1));
+    }
+
+    &.parameter {
+      color: rgb(var(--c-yellow-1));
+    }
+
+    &.builtin {
+      color: rgb(var(--c-orange-1));
+    }
+  }
+}

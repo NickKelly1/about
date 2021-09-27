@@ -1,0 +1,136 @@
+---
+import Head from '../components/Head.astro';
+import Favicon from '../components/Favicon.astro';
+import { CSSProperties } from 'react';
+import { Blubber, Ellipse } from '../components/Svg';
+import { TagList } from '../components/TagList';
+import { Badge } from '../components/Badge';
+import { BadgeList } from '../components/BadgeList';
+import { sumString } from '../utils/sum-string';
+import { randomBetween } from '../utils/random-between';
+import { randomNumber } from '../utils/random-number';
+import { randomElement } from '../utils/random-element';
+import { TEXTUAL_COLORS } from '../utils/colors';
+// import NpmSvg from '../img/npm.svg';
+// import GitHubSvg from '../img/github.svg';
+import { GitHub } from '../components/Icons/GitHub';
+import { Npm } from '../components/Icons/Npm';
+import { Debug } from 'astro/components';
+
+interface Props {
+  content: PackageMarkdownFrontmatter;
+}
+
+const { content: pkg } = Astro.props as Props;
+
+const seed = sumString(pkg.name);
+const _shapeSize = Math.round(randomBetween(70, 100, seed + 1));
+const _shapeTop = Math.round(randomBetween(10, 40, seed + 2));
+const _shapeOverflow = randomBetween(-0.4, -0.6, seed + 3);
+const _shapeIsLeft = !!(randomNumber(seed + 4) >= 0.5);
+const _shapeIsEllipse = !!(randomNumber(seed + 5) >= 0.5);
+
+const svgSize = `${_shapeSize}vmin`;
+const svgStyle: CSSProperties = {
+  position: 'absolute',
+  top: `${_shapeTop}vh`,
+}
+if (_shapeIsLeft) svgStyle.left = `${_shapeSize * _shapeOverflow}vmin`;
+else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
+---
+<html>
+  <head>
+    <Head />
+    <Favicon />
+    <style lang="scss">
+      $page-spacing: var(--s-4);
+      $section-spacing: var(--s-4);
+
+      main {
+        margin: auto;
+        padding: var(--s-4);
+      }
+
+      article {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: $page-spacing;
+      }
+
+      .date {
+        color: rgb(var(--c-gray-1));
+        font-style: italic;
+      }
+
+      #links {
+        display: flex;
+        flex-direction: row;
+        gap: var(--s-3);
+        justify-content: center;
+        align-items: center;
+      }
+
+      #badges {
+        //
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: $section-spacing;
+      }
+
+      #content {
+        text-align: left;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="wrapper__readable card">
+      <article id="package">
+        <header class="section">
+          <h1>{pkg.name}</h1>
+        </header>
+        {(pkg.links?.npm || pkg.links?.repository?.url) && (
+          <section id="links" class="section">
+            {
+              pkg.links?.repository?.type === 'github'
+              ? <a href={pkg.links.repository.url}><GitHub size={"2em"} /></a>
+              : null
+            }
+            {pkg.links?.npm && <a href={pkg.links.npm}><Npm height={"2em"} /></a>}
+          </section>
+        )}
+        <section id="badges" class="section">
+          <BadgeList centered badges={pkg.badges} />
+        </section>
+        <section id="content" class="section">
+          <div class="markdown">
+            <slot />
+          </div>
+        </section>
+      </article>
+    </main>
+    <div class="background">
+      {_shapeIsEllipse && (
+        <Blubber
+          uniq="s1"
+          style={svgStyle}
+          size={svgSize}
+        />
+      )}
+      {!_shapeIsEllipse && (
+        <Ellipse
+          uniq="s1"
+          class="rotate-cc-8"
+          style={svgStyle}
+          size={svgSize}
+          color={randomElement(TEXTUAL_COLORS, seed)}
+          xpery={randomBetween(0.85, 1.15, seed)}
+        />
+      )}
+    </div>
+  </body>
+</html>

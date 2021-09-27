@@ -1,0 +1,58 @@
+---
+import { TagList } from '../components/TagList';
+
+interface Props {
+  project: ProjectMarkdownFrontmatter;
+}
+
+const {
+  project,
+} = Astro.props as Props;
+
+const {
+  title,
+  date,
+  description,
+  company,
+  tags,
+  url,
+} = project;
+
+---
+<style lang="scss">
+  .project {
+    position: relative;
+    padding-top: var(--s-3);
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      background-color: rgb(var(--c-gold-1));
+      width: 32px;
+      height: 8px;
+    }
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: var(--s-2);
+
+    .date {
+      color: rgb(var(--c-gray-1));
+      font-style: italic;
+    }
+
+    .company {
+      font-weight: bold;
+    }
+  }
+</style>
+
+<article class="project">
+  <h3>{title}</h3>
+  <div class="date">{date}</div>
+  <div class="company">{company}</div>
+  <div>{description}</div>
+  <TagList tags={tags} />
+  <a class="as-flex-start" href={url}>View More</a>
+</article>

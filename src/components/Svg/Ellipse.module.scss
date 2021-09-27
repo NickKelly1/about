@@ -1,0 +1,29 @@
+@import '../../scss/variables';
+
+.ellipse {
+  --stop-from: rgb(var(--c-blue-1));
+  --stop-to: rgb(var(--c-blue-3));
+
+  @each $color in $colors {
+    &.#{$color} {
+      --stop-from: rgb(var(--c-#{$color}-1));
+      --stop-to: rgb(var(--c-#{$color}-3));
+    }
+  }
+
+  stop {
+    color: black;
+
+    stop-color: var(--stop-from);
+    stop-opacity: 1;
+
+    &.from {
+      stop-color: var(--stop-from);
+      stop-opacity: 1;
+    }
+    &.to {
+      stop-color: var(--stop-to);
+      stop-opacity: 1;
+    }
+  }
+}

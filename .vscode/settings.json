@@ -1,5 +1,5 @@
 {
-  "window.title": "",
+  "window.title": "@vscode/nickkelly.dev",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -9,4 +9,9 @@
     "javascriptreact",
     "typescriptreact"
   ],
+  "eslint.lintTask.options": "-c .eslintrc.js .",
+  "eslint.lintTask.enable": false,
+  "files.associations": {
+    "*.md2": "markdown",
+  },
 }

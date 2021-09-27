@@ -1,45 +1,23 @@
 {
-  "name": "about",
-  "version": "0.1.0",
+  "name": "nickkelly.dev",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest -c config/jest.config.ts",
-    "test:coverage": "jest -c config/jest.config.ts --coverage",
-    "test:watch": "jest -c config/jest.config.ts --watch",
-    "lint:2": "eslint . --ext '*/**/*.{js,jsx,ts,tsx}'",
-    "lint:2:fix": "eslint . --ext '*/**/*.{js,jsx,ts,tsx}' --fix",
-    "upgrade": "npm-check --update"
-  },
-  "dependencies": {
-    "@nkp/config": "0.0.8",
-    "@nkp/iterable": "0.0.32",
-    "clsx": "^1.1.1",
-    "dotenv": "^10.0.0",
-    "graphql": "^15.5.1",
-    "next": "11.1.0",
-    "prismjs": "^1.24.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "winston": "^3.3.3",
-    "winston-daily-rotate-file": "^4.5.5"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "@jest/types": "^27.1.0",
-    "@types/jest": "^27.0.1",
-    "@types/prismjs": "^1.16.6",
-    "@types/react": "17.0.19",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "eslint-config-next": "11.1.0",
-    "eslint": "7.32.0",
-    "jest": "^27.1.0",
+    "@astrojs/renderer-preact": "^0.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "astro": "^0.20.7",
+    "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
     "normalize.css": "^8.0.1",
-    "npm-check": "^5.9.2",
-    "sass": "^1.38.2",
-    "typescript": "4.4.2"
+    "prismjs": "^1.25.0"
   }
 }

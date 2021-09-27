@@ -1,0 +1,148 @@
+---
+import Head from '../components/Head.astro';
+import Favicon from '../components/Favicon.astro';
+import { CSSProperties } from 'react';
+import { Blubber, Ellipse } from '../components/Svg';
+import { TagList } from '../components/TagList';
+import { sumString } from '../utils/sum-string';
+import { randomBetween } from '../utils/random-between';
+import { randomNumber } from '../utils/random-number';
+import { randomElement } from '../utils/random-element';
+import { TEXTUAL_COLORS } from '../utils/colors';
+
+interface Props {
+  content: ProjectMarkdownFrontmatter;
+}
+
+const { content: project } = Astro.props as Props;
+
+const seed = sumString(project.title);
+const _shapeSize = Math.round(randomBetween(70, 100, seed + 1));
+const _shapeTop = Math.round(randomBetween(10, 40, seed + 2));
+const _shapeOverflow = randomBetween(-0.4, -0.6, seed + 3);
+const _shapeIsLeft = !!(randomNumber(seed + 4) >= 0.5);
+const _shapeIsEllipse = !!(randomNumber(seed + 5) >= 0.5);
+
+const svgSize = `${_shapeSize}vmin`;
+const svgStyle: CSSProperties = {
+  position: 'absolute',
+  top: `${_shapeTop}vh`,
+}
+if (_shapeIsLeft) svgStyle.left = `${_shapeSize * _shapeOverflow}vmin`;
+else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
+
+---
+<html lang="en">
+  <head>
+    <Head />
+    <Favicon />
+    <style lang="scss">
+      $page-spacing: var(--s-4);
+      $section-spacing: var(--s-4);
+
+      .title {
+        //
+      }
+
+      main {
+        margin: auto;
+        padding: var(--s-4);
+      }
+
+      article {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: $page-spacing;
+      }
+
+      .company {
+        font-weight: bold;
+      }
+
+      .date {
+        color: rgb(var(--c-gray-1));
+        font-style: italic;
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: $section-spacing;
+      }
+
+      #technology {
+        //
+      }
+
+      #roles {
+        //
+      }
+
+      #content {
+        //
+
+        .text {
+          text-align: left;
+          // font-size: var(--f-u1);
+
+          line-height: 1.2;
+          // font-family: raleway;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper__readable card">
+      <article id="project">
+        <header class="section">
+          <h1 class="title">{project.title}</h1>
+          <div class="date">{project.date}</div>
+          <div class="company">{project.company}</div>
+        </header>
+
+        <section id="description" class="section">
+          {project.description}
+        </section>
+
+        <section id="technology" class="section">
+          <h2 class="title">Technologies</h2>
+          <TagList centered tags={project.tags} />
+          <div class="text">
+            {project.technology}
+          </div>
+        </section>
+
+        <section id="roles" class="section">
+          <h2 class="title">My Role</h2>
+          <ul class="dot-list as-center">
+            {project.role.map((role) => (
+              <li>
+                {role}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </article>
+    </main>
+    <div class="background">
+      {_shapeIsEllipse && (
+        <Blubber
+          uniq="s1"
+          style={svgStyle}
+          size={svgSize}
+        />
+      )}
+      {!_shapeIsEllipse && (
+        <Ellipse
+          uniq="s1"
+          class="rotate-cc-8"
+          style={svgStyle}
+          size={svgSize}
+          color={randomElement(TEXTUAL_COLORS, seed)}
+          xpery={randomBetween(0.85, 1.15, seed)}
+        />
+      )}
+    </div>
+  </body>
+</html>

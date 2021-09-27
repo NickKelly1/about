@@ -1,0 +1,135 @@
+@use "sass:math" as math;
+@import './functions';
+
+p {
+  margin: var(--s-1) 0 var(--s-2) 0;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--ff-h1, var(--ff-body));
+  font-size: var(--f-h1);
+}
+
+h2 {
+  margin: 0;
+  font-family: var(--ff-h2, var(--ff-body));
+  font-size: var(--f-h2);
+}
+
+h3 {
+  margin: 0;
+  font-family: var(--ff-h3, var(--ff-body));
+  font-size: var(--f-h3);
+}
+
+h4 {
+  margin: 0;
+  font-family: var(--ff-h4, var(--ff-body));
+  font-size: var(--f-h4);
+}
+
+h5 {
+  margin: 0;
+  font-family: var(--ff-h5, var(--ff-body));
+  font-size: var(--f-h5);
+}
+
+h6 {
+  margin: 0;
+  font-family: var(--ff-h6, var(--ff-body));
+  font-size: var(--f-h6);
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', 'system-ui', sans-serif;
+  overflow: overlay;
+  padding: var(--s-4);
+  max-width: 100%;
+  position: relative;
+
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  // color: var(--t-active);
+  color: rgb(var(--c-anchor));
+  transition:
+    var(--transition-speed) filter,
+    var(--transition-speed) text-shadow;
+
+  &:hover {
+    filter: brightness(110%);
+    text-shadow: 0px 0px 2px rgb(var(--c-anchor));
+  }
+
+  &:visited {
+    color: rgb(var(--c-anchor-visited));
+    &:hover {
+      text-shadow: 0px 0px 2px rgb(var(--c-anchor-visited));
+    }
+  }
+  // cursor: pointer;
+}
+
+button {
+    box-shadow: var(--sh-c)
+      var(--sh-sm-x)
+      var(--sh-sm-y)
+      var(--sh-sm-b);
+  color: var(--c-gold-1);
+  border: 1px solid rgb(var(--c-gold-3));
+  padding: var(--s-1) var(--s-2);
+  border-radius: 16px;
+  background-color: rgb(var(--c-black-1));
+  cursor: pointer;
+  transition: var(--transition-speed) filter;
+
+  &:hover {
+    filter: brightness(140%);
+  }
+
+  &:active {
+    filter: brightness(180%);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 100%;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(var(--c-black-1), 75%);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--c-red-2));
+  border-radius: 16px;
+}
