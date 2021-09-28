@@ -46,8 +46,8 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
       )}
       style={{
         width: size,
-        '--blubber-shape-1': cleanPath(path1),
-        '--blubber-shape-2': cleanPath(path2),
+        '--blubber-shape-1': `"${cleanPath(path1)}"`,
+        '--blubber-shape-2': `"${cleanPath(path2)}"`,
         ...style
       } as CSSProperties}
       viewBox={`0 0 100 100`}
@@ -56,17 +56,22 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
         <Path
           fill={`url(#${uniq}-grad)`}
           style={{
-            opacity: 1,
+            opacity: "1",
             // fill: '#ff949c',
-            fillOpacity: 1,
+            fillOpacity: "1",
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
-            strokeMiterlimit: 4,
+            strokeMiterlimit: "4",
             strokeDasharray: 'none',
-            strokeDashoffset: 0,
-            strokeOpacity: 1,
+            strokeDashoffset: "0",
+            strokeOpacity: "1",
             paintOrder: 'normal',
           }}
+
+          // to be animated by css
+          // currently firefox does not support "d" as a presentation attribute
+          // so the blob will only be animated and wobbling in chrome
+          d={path1}
         />
       </G>
 
@@ -165,12 +170,12 @@ function toShape(
  */
 function toPath(curves: CubicBezierCurve[]): string {
   const p =
-    '"'
+    ''
     + `\n\tM\n\t\t${at(curves, -1).p.x} ${at(curves, -1).p.y}\n`
     + curves
       .map((c) => `\tC\n\t\t${c.bf.x}, ${c.bf.y}\n\t\t${c.bt.x}, ${c.bt.y}\n\t\t${c.p.x}, ${c.p.y}`)
       .join('\n\n')
-    + ' z"';
+    + ' z';
   return p;
 }
 

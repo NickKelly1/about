@@ -3,9 +3,14 @@
 
 .blubber {
   stroke-width: 0;
+
   stop {
-    animation: blubber-color var(--animation-speed-1) normal linear infinite;
+    stop-color: var(--blubber-color-1);
     stop-opacity: 1;
+    animation: blubber-color var(--animation-speed-1) normal linear infinite;
+    -webkit-animation: blubber-color var(--animation-speed-1) normal linear infinite;
+    -z-animation: blubber-color var(--animation-speed-1) normal linear infinite;
+    -o-animation: blubber-color var(--animation-speed-1) normal linear infinite;
   }
 
   g {
@@ -23,6 +28,8 @@
       translate(50%, 50%);
     path {
       animation: blubber-shape var(--animation-speed-12) normal linear infinite;
+      // presentation attribute d: is not supported in firefox
+      // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation#attr-d
       d: path(var(--blubber-shape-1));
     }
   }
@@ -40,7 +47,6 @@
   0% {
     d: path(var(--blubber-shape-1));
     transform:
-      // rotate(180deg)
       rotate(0deg)
     ;
   }
@@ -48,13 +54,11 @@
     d: path(var(--blubber-shape-2));
     transform:
       rotate(180deg)
-      // skewX(180deg)
     ;
   }
   0% {
     d: path(var(--blubber-shape-1));
     transform:
-      // rotate(180deg)
       rotate(360deg)
     ;
   }
