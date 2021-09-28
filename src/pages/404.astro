@@ -1,20 +1,62 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Footer from '../components/Footer/index.jsx';
-import Nav from '../components/Nav/index.jsx';
+import Head from '../components/Head.astro';
+import Favicon from '../components/Favicon.astro';
+import { Blubber } from '../components/Svg/Blubber';
+
+const blubberSide = (Math.random() <= 0.5) ? 'right' : 'left';
 
 ---
 
 <html lang="en">
   <head>
-    <MainHead title="Not Found" />
+    <Head />
+    <Favicon />
+    <title>404</title>
+    <style lang="scss">
+      body {
+        max-height: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      main {
+        padding: var(--s-3);
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: var(--s-6);
+      }
+    </style>
   </head>
   <body>
-    <Nav />
-    <div class="wrapper mt4 mb4">
-      <h1>Page Not Found</h1>
-      <p>Not found</p>
+    <div class="page stretch">
+      <main class="container card">
+        <h1>Page Not Found</h1>
+        <a href="/">home</a>
+      </main>
     </div>
-    <Footer />
+    <div class="background">
+      <Blubber
+        uniq="b2"
+        style={{ top: `0%`, position: 'absolute', [blubberSide]: '-70vmin', }}
+        colorFrom={[
+          'rgb(var(--c-red-3))',
+          'rgb(var(--c-orange-3))',
+          'rgb(var(--c-yellow-3))',
+          'rgb(var(--c-pink-3))',
+        ]}
+        colorTo={[
+          'rgb(var(--c-purple-3))',
+          'rgb(var(--c-pink-3))',
+          'rgb(var(--c-red-3))',
+          'rgb(var(--c-orange-3))',
+        ]}
+        size="140vmin"
+      />
+    </div>
   </body>
 </html>

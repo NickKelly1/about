@@ -59,8 +59,6 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
             opacity: 1,
             // fill: '#ff949c',
             fillOpacity: 1,
-            stroke: '#070e2e',
-            strokeWidth: 0.26458332,
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
             strokeMiterlimit: 4,

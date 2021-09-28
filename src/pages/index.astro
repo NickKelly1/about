@@ -1,245 +1,331 @@
 ---
-// Component Imports
-import MainHead from '../components/MainHead.astro';
-import Button from '../components/Button/index.jsx';
-import Nav from '../components/Nav/index.jsx';
-import Footer from '../components/Footer/index.jsx';
-import PorfolioPreview from '../components/PortfolioPreview/index.jsx';
+import { Ellipse, Corner, Project as ProjectSvg, Blubber } from '../components/Svg';
+import Head from '../components/Head.astro';
+import Favicon from '../components/Favicon.astro';
+import ProjectOverview from '../components/ProjectOverview.astro';
+import PackageOverview from '../components/PackageOverview.astro';
+import { TopBar } from '../components/TopBar';
+// import PackageOverview from '../components/PackageOverview.astro';
+import { COLORS, TEXTUAL_COLORS, } from '../utils/colors.js';
 
-// Data Fetching: List all Markdown posts in the repo.
-const projects = Astro.fetchContent('./project/**/*.md');
-const featuredProject = projects[0];
+const projectsOrPackages = Astro.fetchContent<PackageMarkdownFrontmatter | ProjectMarkdownFrontmatter>('./**/*.md');
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+const projects = (projectsOrPackages
+  .filter(pop => /[\\/]projects[\\/][^./]*\.md$/.test(pop.file.pathname)) as ProjectMarkdownFrontmatter[])
+  .sort((pa, pb) => pa.order - pb.order)
+;
+
+const packages = (projectsOrPackages
+  .filter(pop => /[\\/]packages[\\/][^./]*\.md$/.test(pop.file.pathname)) as PackageMarkdownFrontmatter[])
+  .sort((pa, pb) => pa.order - pb.order)
+;
+
+let bgd = 0;
+
+let _side: 'right' | 'left' = 'right';
+function lr<T>(fn: (side: 'left' | 'right') => T): T {
+  return fn(_side = (_side === 'left' ? 'right' : 'left'));
+}
+
+
 ---
+
 <html lang="en">
   <head>
-    <MainHead title="Jeanine White: Personal Site" />
+    <Head />
+    <Favicon />
+    <title>Nick Kelly - Developer</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src={Astro.resolve('../scripts/home.js')} type="module"></script>
     <style lang="scss">
-      $w-s: 750px;
+      @import '../scss/variables';
 
-      .hero {
-        position: relative;
-        overflow: hidden;
+      $main-y-padding: var(--s-3);
 
-        @media (min-width: $w-s) {
-          height: 45vw;
-        }
-      }
-
-      .img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      .gradient,
-      .gradient2 {
-        background-image: url('/assets/mesh-gradient.jpg');
-        pointer-events: none;
-        mix-blend-mode: screen;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-      }
-
-      .gradient2 {
-        mix-blend-mode: multiply;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
+      section {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding-left: 2rem;
-
-        @media (min-width: $w-s) {
-          padding-left: 4rem;
-        }
-      }
-
-      .title {
-        font-weight: 900;
-        font-size: var(--f-u8);
-        margin-bottom: 0.5rem;
-        margin-top: 0;
-
-        @media (min-width: $w-s) {
-          font-size: var(--f-u12);
-        }
-      }
-
-      .grid {
-        display: grid;
-        grid-gap: 2rem;
-
-        @media (min-width: 1200px) {
-          grid-template-columns: 2fr 1fr;
-        }
-      }
-
-      .sectionTitle {
-        font-weight: 700;
-        font-size: var(--f-u8);
-        margin-top: 4rem;
-        margin-bottom: 2rem;
-      }
-
-      .role {
-        position: relative;
-        display: inline-block;
-        font-weight: 900;
-        color: var(--t-bg);
-        background-color: var(--t-fg);
-        padding: 0.25em 0.5em;
-        z-index: 2;
-
-        @media (min-width: $w-s) {
-          font-size: var(--f-u3);
-        }
-
-        + .role {
-          margin-left: 1em;
-        }
-
-        &:nth-of-type(1) {
-          .invert {
-            background-color: var(--c-pink);
-          }
-        }
-
-        &:nth-of-type(2) {
-          .invert {
-            background-color: var(--c-blue);
-          }
-        }
-
-        &:nth-of-type(3) {
-          .invert {
-            background-color: var(--c-green);
-          }
-        }
-
-        &:hover {
-          .invert {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-          }
-        }
-      }
-
-      .invert {
-        position: absolute;
-        color: var(--t-fg);
-        display: flex;
         align-items: center;
         justify-content: center;
+        text-align: center;
         width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-      }
+        // max-width: min(95%, 30rem);
+        padding: var(--s-8) var(--s-4);
+        margin-bottom: var(--s-32);
 
-      .desc {
-        font-size: var(--f-u2);
-        margin-top: 1.5rem;
-        margin-bottom: 0;
-      }
+        .title {
+          font-size: var(--f-u5);
 
-      .subtitle {
-        display: block;
-        font-weight: 400;
-        font-size: var(--f-d6);
-        letter-spacing: -0.0625em;
-      }
+          @media only screen and (min-width: $xs) {
+            font-size: var(--f-u8);
+          }
 
-      .bio {
-        line-height: 2;
-        margin-bottom: 2rem;
+          text-align: center;
+          margin-bottom: var(--s-8);
 
-        > span:first-of-type {
-          line-height: 1;
-          margin-bottom: 0.5em;
-          display: block;
-          font-weight: 700;
-          font-size: var(--f-u4);
+          hr {
+            border-color: rgb(var(--c-gold-2));
+          }
         }
+      }
+
+      #me {
+        min-height: min(600px, calc(100vh - 2 * var(--s-3)));
+        position: relative;
+        gap: var(--s-6);
+
+        nav ul {
+          display: flex;
+          gap: var(--s-2);
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-corner-tr {
+          position: absolute;
+          top: 0;
+          right: 0;
+          max-height: 125px;
+        }
+
+        .hero-corner-bl {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          max-height: 125px;
+          transform: rotate(180deg);
+        }
+      }
+
+      .skills {
+        .name {
+          margin: var(--s-1);
+        }
+
+        .bar {
+          position: relative;
+          background-color: rgb(var(--c-dark-blue-1));
+          height: 1em;
+          width: 100%;
+
+          span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+          }
+        }
+
+        .list {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: var(--s-3);
+
+          li {
+            width: 100%;
+          }
+        }
+      }
+
+      #languages {
+        //
+      }
+
+      #technologies {
+        //
+      }
+
+      .overview-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-11);
+      }
+
+      #projects {
+        //
+      }
+
+      #packages {
+        //
       }
     </style>
   </head>
   <body>
-    <Nav />
-    <header class="hero">
-      <img
-        width="1600"
-        height="1131"
-        class="img"
-        src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=75"
-        srcSet="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=75 800w,
-        https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=75 1200w,
-        https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&q=75 1600w,
-        https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2400&q=75 2400w,"
-        sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
-      />
-      <div class="gradient" />
-      <div class="gradient2" />
-      <div class="overlay">
-        <h1 class="title">
-          <small class="subtitle">The personal site of </small>Jeanine White
-        </h1>
-        <div>
-          <span class="role">
-            👩‍💻 Developer <span class="invert">👩‍💻 Developer</span>
-          </span>&nbsp;
-          <span class="role">
-            🎤 Speaker <span class="invert">🎤 Speaker</span>
-          </span>&nbsp;
-          <span class="role">
-            ✏️ Writer <span class="invert">✏️ Writer</span>
-          </span>
-        </div>
-        <p class="desc">Lover of dogs, roadtrips, and poetry.</p>
-      </div>
-    </header>
-    <main class="wrapper mt4 mb4">
-      <div class="grid">
-        <div class="section">
-          <h3 class="sectionTitle">Selected Work</h3>
-          <PorfolioPreview project={featuredProject} />
-          <div class="tac mt4">
-            <a href="/projects">
-              <Button>View All</Button>
-            </a>
-          </div>
-        </div>
-        <div class="section">
-          <h3 class="sectionTitle">About me</h3>
-          <p class="bio">
-            <span>Hello!</span> I’m Jeanine, and this is my website. It was made using{' '}
-            <a href="https://github.com/snowpackjs/astro" target="_blank" rel="nofollow">
-              Astro
-            </a>
-            , a new way to build static sites. This is just an example template for you to modify.
-          </p>
-          <p>
-            <a href="/about">Read more</a>
-          </p>
-        </div>
-      </div>
-    </main>
-    <Footer />
+    <!-- <TopBar /> -->
+    <div class="page">
+      <main class="container">
+        <!-- about me -->
+        <section id="me" class="card">
+          <h1>Hey, I'm Nick</h1>
+          <p>Web Developer with 3 years experience building web applications for business</p>
+          <p>Based in Los Angeles, CA</p>
+          <!-- <div><a href="#">Hire Me</a></div> -->
+          <nav>
+            <ul>
+              <li><a href="#languages">Languages</a></li>
+              <li><a href="#technologies">Technologies</a></li>
+              <li><a href="#projects">Featured Projects</a></li>
+              <li><a href="#packages">Featured Packages</a></li>
+              <!-- <li><a href="#posts">Posts</a></li> -->
+            </ul>
+          </nav>
+          <!-- <Corner class="hero-corner-tr" color="orange" /> -->
+          <!-- <Corner class="hero-corner-bl" color="red" /> -->
+        </section>
+
+        <!-- skills -->
+        <section id="languages" class="skills card">
+          <h2 class="title">
+            Languages
+            <hr />
+          </h2>
+          <ul class="list">
+            <li>
+              <div class="name">JavaScript</div>
+              <div class="bar"><span class="bg-js" style="width: 95%;" /></div>
+            </li>
+            <li>
+              <div class="name">TypeScript</div>
+              <div class="bar"><span class="bg-ts" style="width: 95%;" /></div>
+            </li>
+            <li>
+              <div class="name">HTML</div>
+              <div class="bar"><span class="bg-html" style="width: 80%;" /></div>
+            </li>
+            <li>
+              <div class="name">CSS</div>
+              <div class="bar"><span class="bg-css" style="width: 70%;" /></div>
+            </li>
+            <li>
+              <div class="name">PHP</div>
+              <div class="bar"><span class="bg-php" style="width: 50%;" /></div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="technologies" class="skills card">
+          <h2 class="title">
+            Technologies
+            <hr />
+          </h2>
+          <ul class="list">
+            <li>
+              <div class="name">NodeJS</div>
+              <div class="bar"><span class="bg-node" style="width: 90%;" /></div>
+            </li>
+            <li>
+              <div class="name">React</div>
+              <div class="bar"><span class="bg-react" style="width: 80%;" /></div>
+            </li>
+            <li>
+              <div class="name">Linux</div>
+              <div class="bar"><span class="bg-linux" style="width: 60%;" /></div>
+            </li>
+            <li>
+              <div class="name">Laravel</div>
+              <div class="bar"><span class="bg-laravel" style="width: 50%;" /></div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="projects" class="card">
+          <h2 class="title">
+            Featured Projects
+            <hr />
+          </h2>
+          <ul class="overview-list">
+            {projects.map(project => (
+              <li>
+                <ProjectOverview project={project} />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="packages" class="card">
+          <h2 class="title">
+            Featured Packages
+            <hr />
+          </h2>
+          <ul class="overview-list">
+            {packages.map((pkg) => (
+              <li>
+                <PackageOverview pkg={pkg} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <div class="background">
+      {lr((side) => (
+        <Ellipse
+          uniq="e1"
+          class="rotate-8"
+          style={{ top: `${bgd -= 10}vh`, position: 'absolute', [side]: '-40vmin', }}
+          color="orange"
+          xpery={1.15}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Blubber
+          uniq="b2"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          colorFrom={[
+            'rgb(var(--c-red-3))',
+            'rgb(var(--c-orange-3))',
+            'rgb(var(--c-yellow-3))',
+            'rgb(var(--c-pink-3))',
+          ]}
+          colorTo={[
+            'rgb(var(--c-orange-3))',
+            'rgb(var(--c-red-3))',
+            'rgb(var(--c-pink-3))',
+            'rgb(var(--c-yellow-3))',
+          ]}
+          size="140vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e2"
+          class="rotate-cc-8"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-40vmin', }}
+          color="orange"
+          xpery={1.15}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e3"
+          class="rotate-8"
+          style={{ top: `${bgd += 180}vh`, transform: 'rotate(60deg)', position: 'absolute', [side]: '-150px', }}
+          color="red"
+          xpery={0.85}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e4"
+          class="rotate-cc-8"
+          style={{ top: `${bgd += 180}vh` , transform: 'rotate(-15deg)', position: 'absolute', [side]: '-20vmin', }}
+          color="purple"
+          xpery={0.90}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Blubber
+          uniq="b1"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          size="130vmin"
+        />
+      ))}
+    </div>
   </body>
 </html>
