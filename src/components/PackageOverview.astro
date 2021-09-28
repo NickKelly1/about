@@ -1,5 +1,7 @@
 ---
 import { TagList } from '../components/TagList';
+import { BadgeList } from '../components/BadgeList';
+import { PackageLinks } from '../components/PackageLinks';
 import { Markdown } from 'astro/components';
 
 interface Props {
@@ -43,13 +45,11 @@ const {
 <article class="package">
   <h3>{pkg.name}</h3>
   <div class="date">{pkg.date}</div>
+  <!-- <div class="wrap-list wrap-list-md">
+    <PackageLinks size="1.5em" links={pkg.links} />
+  </div> -->
+  <BadgeList badges={pkg.badges} />
   <div>{pkg.description}</div>
-  {pkg.snippet && (
-    <div class="markdown">
-      // <Markdown content={pkg.snippet} />
-      <Markdown>{pkg.snippet}</Markdown>
-    </div>
-  )}
   <a class="as-flex-start" href={pkg.url}>View More</a>
   <!-- <slot /> -->
 </article>

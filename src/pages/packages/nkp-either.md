@@ -1,14 +1,39 @@
 ---
+order: 5
 layout: ../../layouts/package.astro
 name: '@nkp/either'
 date: 2021
 
 description: |
-  todo: description
+  Utility class for working with values of two types.
 
-tags:
-  - TypeScript
+links:
+  npm: https://www.npmjs.com/package/@nkp/either
+  repository:
+    type: github
+    url: https://github.com/NickKelly1/nkp-either
+
+badges:
+  -
+    alt: npm
+    image: https://badge.fury.io/js/%40nkp%2Feither.svg
+    link: https://www.npmjs.com/package/@nkp/either
+
+  -
+    alt: Node.JS package
+    image: https://github.com/NickKelly1/nkp-either/actions/workflows/release.yml/badge.svg
+    link: https://github.com/NickKelly1/nkp-either/actions/workflows/release.yml
+
+  -
+    name: vulnerabilities
+    image: https://snyk.io/test/github/nickkelly1/nkp-either/badge.svg
 ---
+
+Utility class for working with values of two types.
+
+Provides a fluent interface with methods to transform the underlying value.
+
+Useful for code that has success, failure and recovery paths.
 
 ```ts
 const input = '0.5';
@@ -38,10 +63,16 @@ function toNumber(unknown: unknown): Either<number, string> {
   case 'string': {
     const num = Number(unknown);
     if (!Number.isFinite(num))
-      return Either.left('Failed to parse number: string value is not numeric');
+      return Either.left(
+        'Failed to parse number: '
+        + 'string value is not numeric'
+      );
     return Either.right(num);
   }
-  default: return Either.left(`Failed to parse number: unhandled type "${typeof unknown}""`);
+  default: return Either.left(
+    `Failed to parse number: '
+    + 'unhandled type "${typeof unknown}"`
+  );
   }
 }
 ```

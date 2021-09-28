@@ -74,8 +74,12 @@
   --c-gray-2: 112, 145, 162;
   --c-gray-3: 95, 127, 145;
 
-  --c-anchor: 118, 193, 243;
-  --c-anchor-visited: 229, 198, 253;
+  // --c-anchor: 118, 193, 243;
+  --c-anchor: var(--c-gold-1);
+  // --c-anchor: var(--c-yellow-1);
+  --c-anchor-hover: var(--c-gold-1);
+  // --c-anchor-visited: 229, 198, 253;
+  --c-anchor-visited: var(--c-gold-3);
 
   --c-js: var(--c-yellow-1);
   --c-javascript: var(--c-yellow-1);
@@ -137,6 +141,9 @@
   --s-30: 15.0rem;
   --s-31: 15.5rem;
   --s-32: 16.0rem;
+
+  // (w)idth container
+  --w-container: min(40em, 90%);
 
   // (f)ont
   --f-u18: 11.390625em;

@@ -25,7 +25,7 @@ const config = {
     'jest': true,
   },
   extends: [
-    'next/core-web-vitals',
+    // 'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'eslint:recommended',

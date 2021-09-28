@@ -1,4 +1,5 @@
 ---
+order: 5
 layout: ../../layouts/project.astro
 title: Ci Flux
 company: Corporate Initiatives

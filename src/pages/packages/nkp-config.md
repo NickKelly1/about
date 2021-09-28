@@ -1,4 +1,5 @@
 ---
+order: 4
 layout: ../../layouts/package.astro
 name: '@nkp/config'
 date: 2021
@@ -8,7 +9,9 @@ description: |
 
 links:
   npm: https://www.npmjs.com/package/@nkp/config
-  repository: https://github.com/NickKelly1/nkp-config
+  repository:
+    type: github
+    url: https://github.com/NickKelly1/nkp-config
 
 badges:
   -
@@ -26,7 +29,9 @@ badges:
     image: https://snyk.io/test/github/nickkelly1/nkp-config/badge.svg
 ---
 
-`@nkp/config` provides simple utilities to parse and coerce configuration values and plays nicely with TypeScript.
+Provides simple utilities to parse and coerce configuration values.
+
+Plays nicely with TypeScript.
 
 ```ts
 import * as c from '@nkp/config';

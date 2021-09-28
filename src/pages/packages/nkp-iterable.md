@@ -1,4 +1,5 @@
 ---
+order: 2
 layout: ../../layouts/package.astro
 name: '@nkp/iterable'
 date: 2021
@@ -30,10 +31,12 @@ badges:
 
 Utility classes for synchronous and lazy iterables.
 
+Provides a fluent interface with utilities to transform the underlying value.
+
 Often `@nkp/iterable` is faster than native array methods because it does not check for array holes.
 
 ```ts
-import { collect } from ‘@nkp/iterate’;
+import { collect } from '@nkp/iterate';
 
 const collection = collect([
   'index.html',
@@ -49,5 +52,5 @@ const collection = collect([
 collection
   .map(file => `public/${file}`)
   .matching(/\.(css|js)^/)
-  .tapSelf((self) => console.log(‘assets: ${self.toArray()}’);
+  .tapSelf((self) => console.log(`assets: ${self.toArray()}`);
 ```

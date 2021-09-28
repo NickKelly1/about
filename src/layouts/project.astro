@@ -93,56 +93,58 @@ else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
     </style>
   </head>
   <body>
-    <main class="wrapper__readable card">
-      <article id="project">
-        <header class="section">
-          <h1 class="title">{project.title}</h1>
-          <div class="date">{project.date}</div>
-          <div class="company">{project.company}</div>
-        </header>
+    <div class="page">
+      <main class="container card">
+        <article id="project">
+          <header class="section">
+            <h1 class="title">{project.title}</h1>
+            <div class="date">{project.date}</div>
+            <div class="company">{project.company}</div>
+          </header>
 
-        <section id="description" class="section">
-          {project.description}
-        </section>
+          <section id="description" class="section">
+            {project.description}
+          </section>
 
-        <section id="technology" class="section">
-          <h2 class="title">Technologies</h2>
-          <TagList centered tags={project.tags} />
-          <div class="text">
-            {project.technology}
-          </div>
-        </section>
+          <section id="technology" class="section">
+            <h2 class="title">Technologies</h2>
+            <TagList centered tags={project.tags} />
+            <div class="text">
+              {project.technology}
+            </div>
+          </section>
 
-        <section id="roles" class="section">
-          <h2 class="title">My Role</h2>
-          <ul class="dot-list as-center">
-            {project.role.map((role) => (
-              <li>
-                {role}
-              </li>
-            ))}
-          </ul>
-        </section>
-      </article>
-    </main>
-    <div class="background">
-      {_shapeIsEllipse && (
-        <Blubber
-          uniq="s1"
-          style={svgStyle}
-          size={svgSize}
-        />
-      )}
-      {!_shapeIsEllipse && (
-        <Ellipse
-          uniq="s1"
-          class="rotate-cc-8"
-          style={svgStyle}
-          size={svgSize}
-          color={randomElement(TEXTUAL_COLORS, seed)}
-          xpery={randomBetween(0.85, 1.15, seed)}
-        />
-      )}
+          <section id="roles" class="section">
+            <h2 class="title">My Role</h2>
+            <ul class="dot-list as-center">
+              {project.role.map((role) => (
+                <li>
+                  {role}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </article>
+      </main>
+      <div class="background">
+        {_shapeIsEllipse && (
+          <Blubber
+            uniq="s1"
+            style={svgStyle}
+            size={svgSize}
+          />
+        )}
+        {!_shapeIsEllipse && (
+          <Ellipse
+            uniq="s1"
+            class="rotate-cc-8"
+            style={svgStyle}
+            size={svgSize}
+            color={randomElement(TEXTUAL_COLORS, seed)}
+            xpery={randomBetween(0.85, 1.15, seed)}
+          />
+        )}
+      </div>
     </div>
   </body>
 </html>

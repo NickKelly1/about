@@ -1,8 +1,9 @@
 ---
+order: 3
 layout: ../../layouts/project.astro
 title: Ci Scoreboard
 company: Corporate Initiatives
-date: 2018-2020
+date: 2019
 
 description: |
   Real-time multi-page client-server web application working as a control system, content management system, and design system to manage digital signage at sports venues.

@@ -1,4 +1,5 @@
 ---
+order: 3
 layout: ../../layouts/package.astro
 name: '@nkp/color'
 date: 2021

@@ -4,6 +4,7 @@ import Favicon from '../components/Favicon.astro';
 import { CSSProperties } from 'react';
 import { Blubber, Ellipse } from '../components/Svg';
 import { TagList } from '../components/TagList';
+import { PackageLinks } from '../components/PackageLinks';
 import { Badge } from '../components/Badge';
 import { BadgeList } from '../components/BadgeList';
 import { sumString } from '../utils/sum-string';
@@ -37,6 +38,7 @@ const svgStyle: CSSProperties = {
 }
 if (_shapeIsLeft) svgStyle.left = `${_shapeSize * _shapeOverflow}vmin`;
 else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
+
 ---
 <html>
   <head>
@@ -47,7 +49,6 @@ else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
       $section-spacing: var(--s-4);
 
       main {
-        margin: auto;
         padding: var(--s-4);
       }
 
@@ -88,31 +89,29 @@ else svgStyle.right = `${_shapeSize * _shapeOverflow}vmin`;
     </style>
   </head>
   <body>
-    <main class="wrapper__readable card">
-      <article id="package">
-        <header class="section">
-          <h1>{pkg.name}</h1>
-        </header>
-        {(pkg.links?.npm || pkg.links?.repository?.url) && (
+    <div class="page">
+      <main class="container card">
+        <article id="package">
+          <header class="section">
+            <h1>{pkg.name}</h1>
+          </header>
           <section id="links" class="section">
-            {
-              pkg.links?.repository?.type === 'github'
-              ? <a href={pkg.links.repository.url}><GitHub size={"2em"} /></a>
-              : null
-            }
-            {pkg.links?.npm && <a href={pkg.links.npm}><Npm height={"2em"} /></a>}
+            <PackageLinks links={pkg.links} />
           </section>
-        )}
-        <section id="badges" class="section">
-          <BadgeList centered badges={pkg.badges} />
-        </section>
-        <section id="content" class="section">
-          <div class="markdown">
-            <slot />
-          </div>
-        </section>
-      </article>
-    </main>
+          <section id="badges" class="section">
+            <BadgeList centered badges={pkg.badges} />
+          </section>
+          <section id="content" class="section">
+            <div class="markdown">
+              <slot />
+            </div>
+          </section>
+          <section class="section">
+            <a href={pkg.links.repository.url}>View on GitHub</a>
+          </section>
+        </article>
+      </main>
+    </div>
     <div class="background">
       {_shapeIsEllipse && (
         <Blubber

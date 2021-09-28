@@ -1,4 +1,5 @@
 ---
+order: 1
 layout: ../../layouts/package.astro
 name: '@nkp/maybe'
 date: 2021
@@ -6,11 +7,35 @@ date: 2021
 description: |
   Utility class for working with values that may or may not exist.
 
-tags:
-  - TypeScript
+links:
+  npm: https://www.npmjs.com/package/@nkp/maybe
+  repository:
+    type: github
+    url: https://github.com/NickKelly1/nkp-maybe
+
+badges:
+  -
+    alt: npm
+    image: https://badge.fury.io/js/%40nkp%2Fmaybe.svg
+    link: https://www.npmjs.com/package/@nkp/maybe
+
+  -
+    alt: Node.JS package
+    image: https://github.com/NickKelly1/nkp-maybe/actions/workflows/release.yml/badge.svg
+    link: https://github.com/NickKelly1/nkp-maybe/actions/workflows/release.yml
+
+  -
+    name: vulnerabilities
+    image: https://snyk.io/test/github/nickkelly1/nkp-maybe/badge.svg
 ---
 
+Utility class for working with values that may not exist.
+
+Provides a fluent interface with methods to transform the underlying value.
+
 ```ts
+// example: transform a hexidecimal number to a rgb number
+
 import { Maybe } from '@nkp/maybe';
 
 const hex = /#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})?/i;

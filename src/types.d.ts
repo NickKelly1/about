@@ -20,6 +20,7 @@ interface AstroFrontmatter {
 }
 
 interface ProjectMarkdownFrontmatter extends AstroFrontmatter {
+  order: number;
   layout: string;
   title: string;
   company: string;
@@ -31,6 +32,7 @@ interface ProjectMarkdownFrontmatter extends AstroFrontmatter {
 }
 
 interface PackageMarkdownFrontmatter extends AstroFrontmatter {
+  order: number;
   layout: string;
   name: string;
   date: string;
@@ -46,7 +48,7 @@ interface Badge {
 }
 
 interface PackageLinks {
-  npm?: string;
+  npm: string;
   repository?: {
     type: RepositoryType
     url: string;

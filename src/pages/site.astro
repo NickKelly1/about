@@ -4,13 +4,29 @@ import Head from '../components/Head.astro';
 import Favicon from '../components/Favicon.astro';
 import ProjectOverview from '../components/ProjectOverview.astro';
 import PackageOverview from '../components/PackageOverview.astro';
+import { TopBar } from '../components/TopBar';
 // import PackageOverview from '../components/PackageOverview.astro';
 import { COLORS, TEXTUAL_COLORS, } from '../utils/colors.js';
 
 const projectsOrPackages = Astro.fetchContent<PackageMarkdownFrontmatter | ProjectMarkdownFrontmatter>('./**/*.md');
 
-const projects = projectsOrPackages.filter(pop => /[\\/]projects[\\/][^./]*\.md$/.test(pop.file.pathname)) as ProjectMarkdownFrontmatter[];
-const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$/.test(pop.file.pathname)) as PackageMarkdownFrontmatter[];
+const projects = (projectsOrPackages
+  .filter(pop => /[\\/]projects[\\/][^./]*\.md$/.test(pop.file.pathname)) as ProjectMarkdownFrontmatter[])
+  .sort((pa, pb) => pa.order - pb.order)
+;
+
+const packages = (projectsOrPackages
+  .filter(pop => /[\\/]packages[\\/][^./]*\.md$/.test(pop.file.pathname)) as PackageMarkdownFrontmatter[])
+  .sort((pa, pb) => pa.order - pb.order)
+;
+
+let bgd = 0;
+
+let _side: 'right' | 'left' = 'right';
+function lr<T>(fn: (side: 'left' | 'right') => T): T {
+  return fn(_side = (_side === 'left' ? 'right' : 'left'));
+}
+
 
 ---
 
@@ -26,14 +42,6 @@ const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$
 
       $main-y-padding: var(--s-3);
 
-      main {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
       section {
         display: flex;
         flex-direction: column;
@@ -41,7 +49,7 @@ const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$
         justify-content: center;
         text-align: center;
         width: 100%;
-        max-width: min(95%, 30rem);
+        // max-width: min(95%, 30rem);
         padding: var(--s-8) var(--s-4);
         margin-bottom: var(--s-32);
 
@@ -62,9 +70,9 @@ const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$
       }
 
       #me {
-        min-height: min(600px, calc(100vh - 2 * #{$main-y-padding}));
+        min-height: min(600px, calc(100vh - 2 * var(--s-3)));
         position: relative;
-        gap: var(--s-4);
+        gap: var(--s-6);
 
         nav ul {
           display: flex;
@@ -144,148 +152,180 @@ const packages = projectsOrPackages.filter(pop => /[\\/]packages[\\/][^./]*\.md$
     </style>
   </head>
   <body>
-    <main>
-      <!-- about me -->
-      <section id="me" class="card">
-        <h1>Hey, I'm Nick</h1>
-        <p>Web Developer with 3 years experience building applications for business</p>
-        <p>Based in Los Angeles, CA</p>
-        <div><a href="#">Hire Me</a></div>
-        <nav>
-          <ul>
-            <li><a href="#languages">Languages</a></li>
-            <li><a href="#technologies">Technologies</a></li>
-            <li><a href="#projects">Featured Projects</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#posts">Posts</a></li>
+    <!-- <TopBar /> -->
+    <div class="page">
+      <main class="container">
+        <!-- about me -->
+        <section id="me" class="card">
+          <h1>Hey, I'm Nick</h1>
+          <p>Web Developer with 3 years experience building web applications for business</p>
+          <p>Based in Los Angeles, CA</p>
+          <!-- <div><a href="#">Hire Me</a></div> -->
+          <nav>
+            <ul>
+              <li><a href="#languages">Languages</a></li>
+              <li><a href="#technologies">Technologies</a></li>
+              <li><a href="#projects">Featured Projects</a></li>
+              <li><a href="#packages">Featured Packages</a></li>
+              <!-- <li><a href="#posts">Posts</a></li> -->
+            </ul>
+          </nav>
+          <!-- <Corner class="hero-corner-tr" color="orange" /> -->
+          <!-- <Corner class="hero-corner-bl" color="red" /> -->
+        </section>
+
+        <!-- skills -->
+        <section id="languages" class="skills card">
+          <h2 class="title">
+            Languages
+            <hr />
+          </h2>
+          <ul class="list">
+            <li>
+              <div class="name">JavaScript</div>
+              <div class="bar"><span class="bg-js" style="width: 95%;" /></div>
+            </li>
+            <li>
+              <div class="name">TypeScript</div>
+              <div class="bar"><span class="bg-ts" style="width: 95%;" /></div>
+            </li>
+            <li>
+              <div class="name">HTML</div>
+              <div class="bar"><span class="bg-html" style="width: 80%;" /></div>
+            </li>
+            <li>
+              <div class="name">CSS</div>
+              <div class="bar"><span class="bg-css" style="width: 70%;" /></div>
+            </li>
+            <li>
+              <div class="name">PHP</div>
+              <div class="bar"><span class="bg-php" style="width: 50%;" /></div>
+            </li>
           </ul>
-        </nav>
-        <Corner class="hero-corner-tr" color="orange" />
-        <Corner class="hero-corner-bl" color="green" />
-      </section>
+        </section>
 
-      <!-- skills -->
-      <section id="languages" class="skills card">
-        <h2 class="title">
-          Languages
-          <hr />
-        </h2>
-        <ul class="list">
-          <li>
-            <div class="name">JavaScript</div>
-            <div class="bar"><span class="bg-js" style="width: 95%;" /></div>
-          </li>
-          <li>
-            <div class="name">TypeScript</div>
-            <div class="bar"><span class="bg-ts" style="width: 95%;" /></div>
-          </li>
-          <li>
-            <div class="name">HTML</div>
-            <div class="bar"><span class="bg-html" style="width: 80%;" /></div>
-          </li>
-          <li>
-            <div class="name">CSS</div>
-            <div class="bar"><span class="bg-css" style="width: 70%;" /></div>
-          </li>
-          <li>
-            <div class="name">PHP</div>
-            <div class="bar"><span class="bg-php" style="width: 50%;" /></div>
-          </li>
-        </ul>
-      </section>
-
-      <section id="technologies" class="skills card">
-        <h2 class="title">
-          Technologies
-          <hr />
-        </h2>
-        <ul class="list">
-          <li>
-            <div class="name">NodeJS</div>
-            <div class="bar"><span class="bg-node" style="width: 90%;" /></div>
-          </li>
-          <li>
-            <div class="name">React</div>
-            <div class="bar"><span class="bg-react" style="width: 80%;" /></div>
-          </li>
-          <li>
-            <div class="name">Linux</div>
-            <div class="bar"><span class="bg-linux" style="width: 60%;" /></div>
-          </li>
-          <li>
-            <div class="name">Laravel</div>
-            <div class="bar"><span class="bg-laravel" style="width: 50%;" /></div>
-          </li>
-        </ul>
-      </section>
-
-      <section id="projects" class="card">
-        <h2 class="title">
-          Featured Projects
-          <hr />
-        </h2>
-        <ul class="overview-list">
-          {projects.map(project => (
+        <section id="technologies" class="skills card">
+          <h2 class="title">
+            Technologies
+            <hr />
+          </h2>
+          <ul class="list">
             <li>
-              <ProjectOverview project={project} />
+              <div class="name">NodeJS</div>
+              <div class="bar"><span class="bg-node" style="width: 90%;" /></div>
             </li>
-          ))}
-        </ul>
-      </section>
-
-      <section id="packages" class="card">
-        <h2 class="title">
-          Featured Packages
-          <hr />
-        </h2>
-        <ul class="overview-list">
-          {packages.map((pkg) => (
             <li>
-              <PackageOverview pkg={pkg} />
+              <div class="name">React</div>
+              <div class="bar"><span class="bg-react" style="width: 80%;" /></div>
             </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+            <li>
+              <div class="name">Linux</div>
+              <div class="bar"><span class="bg-linux" style="width: 60%;" /></div>
+            </li>
+            <li>
+              <div class="name">Laravel</div>
+              <div class="bar"><span class="bg-laravel" style="width: 50%;" /></div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="projects" class="card">
+          <h2 class="title">
+            Featured Projects
+            <hr />
+          </h2>
+          <ul class="overview-list">
+            {projects.map(project => (
+              <li>
+                <ProjectOverview project={project} />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="packages" class="card">
+          <h2 class="title">
+            Featured Packages
+            <hr />
+          </h2>
+          <ul class="overview-list">
+            {packages.map((pkg) => (
+              <li>
+                <PackageOverview pkg={pkg} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </div>
 
     <div class="background">
-      <Ellipse
-        uniq="e1"
-        class="rotate-8"
-        style={{ position: 'absolute', left: '-40vmin', top: '-10vmin', }}
-        color="blue"
-        xpery={1.15}
-        size="100vmin"
-      />
-      <Ellipse
-        uniq="e2"
-        class="rotate-cc-8"
-        style={{ position: 'absolute', right: '-40vmin', top: '110vh', }}
-        color="orange"
-        xpery={1.15}
-        size="100vmin"
-      />
-      <Ellipse
-        uniq="e3"
-        class="rotate-8"
-        style={{ transform: 'rotate(60deg)', position: 'absolute', left: '-150px', top: '220vh', }}
-        color="red"
-        xpery={0.85}
-        size="100vmin"
-      />
-      <Ellipse
-        uniq="e4"
-        class="rotate-cc-8"
-        style={{ transform: 'rotate(-15deg)', position: 'absolute', right: '-20vmin', top: '330vh', }}
-        color="purple"
-        xpery={0.90}
-        size="100vmin"
-      />
-      <Blubber
-        uniq="b1"
-        style={{ position: 'absolute', left: '-70vmin', top: '440vh', }}
-        size="130vmin"
-      />
+      {lr((side) => (
+        <Ellipse
+          uniq="e1"
+          class="rotate-8"
+          style={{ top: `${bgd -= 10}vh`, position: 'absolute', [side]: '-40vmin', }}
+          color="orange"
+          xpery={1.15}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Blubber
+          uniq="b2"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          colorFrom={[
+            'rgb(var(--c-red-3))',
+            'rgb(var(--c-orange-3))',
+            'rgb(var(--c-yellow-3))',
+            'rgb(var(--c-pink-3))',
+          ]}
+          colorTo={[
+            'rgb(var(--c-orange-3))',
+            'rgb(var(--c-red-3))',
+            'rgb(var(--c-pink-3))',
+            'rgb(var(--c-yellow-3))',
+          ]}
+          size="140vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e2"
+          class="rotate-cc-8"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-40vmin', }}
+          color="orange"
+          xpery={1.15}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e3"
+          class="rotate-8"
+          style={{ top: `${bgd += 180}vh`, transform: 'rotate(60deg)', position: 'absolute', [side]: '-150px', }}
+          color="red"
+          xpery={0.85}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Ellipse
+          uniq="e4"
+          class="rotate-cc-8"
+          style={{ top: `${bgd += 180}vh` , transform: 'rotate(-15deg)', position: 'absolute', [side]: '-20vmin', }}
+          color="purple"
+          xpery={0.90}
+          size="100vmin"
+        />
+      ))}
+      {lr((side) => (
+        <Blubber
+          uniq="b1"
+          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          size="130vmin"
+        />
+      ))}
     </div>
   </body>
 </html>

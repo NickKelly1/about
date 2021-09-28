@@ -1,4 +1,5 @@
 ---
+order: 2
 layout: ../../layouts/project.astro
 title: Ci Portal Frontend
 company: Corporate Initiatives

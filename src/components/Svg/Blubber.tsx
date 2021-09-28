@@ -12,6 +12,8 @@ export interface BlubberProps {
   class?: string,
   transform: string,
   style?: CSSProperties,
+  colorFrom?: [one?: string, two?: string, three?: string, four?: string],
+  colorTo?: [one?: string, two?: string, three?: string, four?: string],
 }
 
 export const Blubber: FunctionComponent<BlubberProps> = (props) => {
@@ -21,6 +23,18 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
     size,
     class: className,
     transform,
+    colorFrom: [
+      from1 = 'rgb(var(--c-blue-1))',
+      from2 = 'rgb(var(--c-purple-3))',
+      from3 = 'rgb(var(--c-purple-1))',
+      from4 = 'rgb(var(--c-blue-3))',
+    ] = [],
+    colorTo: [
+      to1 = 'rgb(var(--c-blue-1))',
+      to2 = 'rgb(var(--c-purple-3))',
+      to3 = 'rgb(var(--c-purple-1))',
+      to4 = 'rgb(var(--c-blue-3))',
+    ] = [],
   } = props;
 
   return (
@@ -34,14 +48,6 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
         width: size,
         '--blubber-shape-1': cleanPath(path1),
         '--blubber-shape-2': cleanPath(path2),
-        '--blubber-color-from-1': 'rgb(var(--c-blue-1))',
-        '--blubber-color-from-2': 'rgb(var(--c-red-1))',
-        '--blubber-color-from-3': 'rgb(var(--c-yellow-1))',
-        '--blubber-color-from-4': 'rgb(var(--c-green-1))',
-        '--blubber-color-to-4': 'rgb(var(--c-blue-1))',
-        '--blubber-color-to-1': 'rgb(var(--c-red-1))',
-        '--blubber-color-to-2': 'rgb(var(--c-yellow-1))',
-        '--blubber-color-to-3': 'rgb(var(--c-green-1))',
         ...style
       } as CSSProperties}
       viewBox={`0 0 100 100`}
@@ -72,20 +78,20 @@ export const Blubber: FunctionComponent<BlubberProps> = (props) => {
             offset="0%"
             className={styles.from}
             style={{
-              '--blubber-color-1': 'rgb(var(--c-purple-1))',
-              '--blubber-color-2': 'rgb(var(--c-blue-1))',
-              '--blubber-color-3': 'rgb(var(--c-blue-3))',
-              '--blubber-color-4': 'rgb(var(--c-purple-3))',
+              '--blubber-color-1': from1,
+              '--blubber-color-2': from2,
+              '--blubber-color-3': from3,
+              '--blubber-color-4': from4,
             } as CSSProperties}
           />
           <stop
             offset="100%"
             className={styles.to}
             style={{
-              '--blubber-color-1': 'rgb(var(--c-blue-1))',
-              '--blubber-color-2': 'rgb(var(--c-purple-3))',
-              '--blubber-color-3': 'rgb(var(--c-purple-1))',
-              '--blubber-color-4': 'rgb(var(--c-blue-3))',
+              '--blubber-color-1': to1,
+              '--blubber-color-2': to2,
+              '--blubber-color-3': to3,
+              '--blubber-color-4': to4,
             } as CSSProperties}
           />
         </linearGradient>
