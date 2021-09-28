@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import 'normalize.css/normalize.css';
 // @import 'prismjs/themes/prism-dark.css';
 @import './fonts';
 @import './variables';
@@ -74,12 +74,7 @@
   --c-gray-2: 112, 145, 162;
   --c-gray-3: 95, 127, 145;
 
-  // --c-anchor: 118, 193, 243;
   --c-anchor: var(--c-gold-1);
-  // --c-anchor: var(--c-yellow-1);
-  --c-anchor-hover: var(--c-gold-1);
-  // --c-anchor-visited: 229, 198, 253;
-  --c-anchor-visited: var(--c-gold-3);
 
   --c-js: var(--c-yellow-1);
   --c-javascript: var(--c-yellow-1);

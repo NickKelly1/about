@@ -79,8 +79,8 @@
 .tal { text-align: left; }
 .tar { text-align: right; }
 
-.as-flex-start { align-self: flex-start; }
-.as-center { align-self: center; }
+.asfs { align-self: flex-start; }
+.asc { align-self: center; }
 
 // wrapper
 .wrapper {
@@ -243,4 +243,20 @@ $shadows: 'sm', 'md', 'lg';
 
 .stretch {
   width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  padding: var(--s-1);
+  outline: 1px solid;
+  outline-color: rgba(var(--c-gold-3), 0.5);
+  transition:
+    var(--transition-speed) filter,
+    var(--transition-speed) color,
+    var(--transition-speed) outline-color;
+
+  &:hover {
+    filter: brightness(110%);
+    outline-color: rgb(var(--c-anchor));
+  }
 }

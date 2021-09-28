@@ -4,9 +4,6 @@ import Head from '../components/Head.astro';
 import Favicon from '../components/Favicon.astro';
 import ProjectOverview from '../components/ProjectOverview.astro';
 import PackageOverview from '../components/PackageOverview.astro';
-import { TopBar } from '../components/TopBar';
-// import PackageOverview from '../components/PackageOverview.astro';
-import { COLORS, TEXTUAL_COLORS, } from '../utils/colors.js';
 
 const projectsOrPackages = Astro.fetchContent<PackageMarkdownFrontmatter | ProjectMarkdownFrontmatter>('./**/*.md');
 
@@ -20,12 +17,15 @@ const packages = (projectsOrPackages
   .sort((pa, pb) => pa.order - pb.order)
 ;
 
-let bgd = 0;
 
+// random deterministic behaior in-case of isomorphic rendering
+let bgd = 0;
 let _side: 'right' | 'left' = 'right';
 function lr<T>(fn: (side: 'left' | 'right') => T): T {
   return fn(_side = (_side === 'left' ? 'right' : 'left'));
 }
+let c = 0;
+const uniq = () => `uniq-${c += 1}`;
 
 
 ---
@@ -36,7 +36,6 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
     <Favicon />
     <title>Nick Kelly - Developer</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src={Astro.resolve('../scripts/home.js')} type="module"></script>
     <style lang="scss">
       @import '../scss/variables';
 
@@ -79,6 +78,10 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
           gap: var(--s-2);
           flex-wrap: wrap;
           justify-content: center;
+
+          li {
+            margin-bottom: var(--s-2);
+          }
         }
 
         .hero-corner-tr {
@@ -163,13 +166,14 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
           <!-- <div><a href="#">Hire Me</a></div> -->
           <nav>
             <ul>
-              <li><a href="#languages">Languages</a></li>
-              <li><a href="#technologies">Technologies</a></li>
-              <li><a href="#projects">Featured Projects</a></li>
-              <li><a href="#packages">Featured Packages</a></li>
+              <li><a class="link" href="#languages">Languages</a></li>
+              <li><a class="link" href="#technologies">Technologies</a></li>
+              <li><a class="link" href="#projects">Featured Projects</a></li>
+              <li><a class="link" href="#packages">Featured Packages</a></li>
               <!-- <li><a href="#posts">Posts</a></li> -->
             </ul>
           </nav>
+          <!-- <p class="tac"><strong>**NEW September 2021**</strong> US Work authorisation received! I'm now looking for work!</p> -->
           <!-- <Corner class="hero-corner-tr" color="orange" /> -->
           <!-- <Corner class="hero-corner-bl" color="red" /> -->
         </section>
@@ -262,7 +266,7 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
     <div class="background">
       {lr((side) => (
         <Ellipse
-          uniq="e1"
+          uniq={uniq()}
           class="rotate-8"
           style={{ top: `${bgd -= 10}vh`, position: 'absolute', [side]: '-40vmin', }}
           color="orange"
@@ -272,8 +276,8 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
       ))}
       {lr((side) => (
         <Blubber
-          uniq="b2"
-          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          uniq={uniq()}
+          style={{ top: `${bgd += 150}vh`, position: 'absolute', [side]: '-70vmin', }}
           colorFrom={[
             'rgb(var(--c-red-3))',
             'rgb(var(--c-orange-3))',
@@ -291,29 +295,29 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
       ))}
       {lr((side) => (
         <Ellipse
-          uniq="e2"
+          uniq={uniq()}
           class="rotate-cc-8"
-          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-40vmin', }}
-          color="orange"
+          style={{ top: `${bgd += 165}vh`, position: 'absolute', [side]: '-40vmin', }}
+          color="red"
           xpery={1.15}
           size="100vmin"
         />
       ))}
       {lr((side) => (
         <Ellipse
-          uniq="e3"
+          uniq={uniq()}
           class="rotate-8"
-          style={{ top: `${bgd += 180}vh`, transform: 'rotate(60deg)', position: 'absolute', [side]: '-150px', }}
-          color="red"
+          style={{ top: `${bgd += 150}vh`, transform: 'rotate(60deg)', position: 'absolute', [side]: '-50vmin', }}
+          color="yellow"
           xpery={0.85}
           size="100vmin"
         />
       ))}
       {lr((side) => (
         <Ellipse
-          uniq="e4"
+          uniq={uniq()}
           class="rotate-cc-8"
-          style={{ top: `${bgd += 180}vh` , transform: 'rotate(-15deg)', position: 'absolute', [side]: '-20vmin', }}
+          style={{ top: `${bgd += 165}vh` , transform: 'rotate(-15deg)', position: 'absolute', [side]: '-60vmin', }}
           color="purple"
           xpery={0.90}
           size="100vmin"
@@ -321,8 +325,8 @@ function lr<T>(fn: (side: 'left' | 'right') => T): T {
       ))}
       {lr((side) => (
         <Blubber
-          uniq="b1"
-          style={{ top: `${bgd += 180}vh`, position: 'absolute', [side]: '-70vmin', }}
+          uniq={uniq()}
+          style={{ top: `${bgd += 150}vh`, position: 'absolute', [side]: '-70vmin', }}
           size="130vmin"
         />
       ))}

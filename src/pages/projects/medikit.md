@@ -11,15 +11,12 @@ description: |
 technology: |
   NPM package hosted on Verdaccio.
 
-  Wraps sharp for performance with a high-level API. Uses a queueing system to parralelize server load.
+  Wraps Sharp with a high-level API. Uses a queueing system to parallelize server load.
 
 role:
-  - Provide counsel on writing using TypeScript, architecting packages and utilising the latest NodeJS and JavaScript language features.
+  - Provide domain knowledge and support for using TypeScript, architecting npm packages and utilising the latest NodeJS and JavaScript language features.
 
 tags:
   - TypeScript
+  - NodeJS
 ---
-
-Medikit is an npm package hosted on Ci’s private NPM repository.
-
-Medikit exposes high level api for multimedia editing to assist NodeJS-based content management systems.

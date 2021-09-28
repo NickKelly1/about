@@ -75,39 +75,17 @@ img {
 }
 
 a {
-  // color: var(--t-active);
   font-size: var(--f-u1);
   color: rgb(var(--c-anchor));
   text-transform: uppercase;
-  // font-weight: bold;
-  transition:
-    var(--transition-speed) filter,
-    var(--transition-speed) text-shadow,
-    var(--transition-speed) color;
-
-  &:hover {
-    // color: rgb(var(--c-anchor-hover));
-    filter: brightness(140%);
-    // text-shadow: 0px 0px 2px rgb(var(--c-anchor));
-  }
-
-  &:visited {
-    filter: brightness(80%);
-    // color: rgb(var(--c-anchor-visited));
-    &:hover {
-      filter: brightness(120%);
-      // color: rgb(var(--c-anchor-hover));
-      // text-shadow: 0px 0px 2px rgb(var(--c-anchor-visited));
-    }
-  }
-  // cursor: pointer;
+  cursor: pointer;
 }
 
 button {
-    box-shadow: var(--sh-c)
-      var(--sh-sm-x)
-      var(--sh-sm-y)
-      var(--sh-sm-b);
+  box-shadow: var(--sh-c)
+    var(--sh-sm-x)
+    var(--sh-sm-y)
+    var(--sh-sm-b);
   color: var(--c-gold-1);
   border: 1px solid rgb(var(--c-gold-3));
   padding: var(--s-1) var(--s-2);

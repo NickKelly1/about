@@ -16,9 +16,9 @@ technology: |
   Integrations with low-level control systems using low-level NodeJS networking APIs.
 
 role:
-- Joint system architect
 - Full-stack developer
-- Worked with another developer and in coordination with field technicians to architect, develop and deploy the pre-designed application.
+- Worked in a small team to architect and develop the soltuion
+- Provided secondary support operations support in delpoyment and maintenance of the application.
 
 tags:
   - JavaScript
@@ -26,9 +26,3 @@ tags:
   - SocketIO
   - Express
 ---
-
-Ci Scoreboard is a web application providing a live scoreboard view and control-system and content management system. Ci Scoreboard is designed for use at sports stadiums, sports centers and gymnasiums.
-
-Ci Scoreboard can play animations, advertisements, billboards. The content management system automatically generates optimized images and thumbnails and provides the ability to edit images and videos.
-
-JavaScript, React, SocketIO, ExpressJS, JSDoc

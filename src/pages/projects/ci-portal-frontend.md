@@ -13,7 +13,9 @@ technology: |
 
 role:
   - Frontend developer
-  - Joined the frontend team half-way into the project
+  - Joined part-way through the project
+  - Worked with other developers to architect and develop the solution
+  - Provided domain knowledge on TypeScript and React
 
 tags:
   - JavaScript
@@ -21,5 +23,3 @@ tags:
   - React
   - AWS
 ---
-
-todo
