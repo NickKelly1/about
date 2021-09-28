@@ -43,6 +43,7 @@
   100% { stop-color: var(--blubber-color-1); }
 }
 
+// only works in firefox
 @keyframes blubber-shape {
   0% {
     d: path(var(--blubber-shape-1));
