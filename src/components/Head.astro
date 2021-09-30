@@ -1,10 +1,36 @@
 ---
+const env = process.env.NODE_ENV;
 
+const defaultSrc = ["'self'"];
+const scriptSrc = ["'self'"];
+const connectSrc = ["'self'"];
+const styleSrc = ["'self'", "fonts.googleapis.com", "'unsafe-inline'"];
+const fontSrc = ["'self'", "fonts.gstatic.com"];
+const imgSrc = ["https://*", "fonts.googleapis.com"];
+const childSrc = ["'none'"];
+if (env === 'development') {
+  scriptSrc.push("'unsafe-inline'");
+  connectSrc.push('ws://localhost:*');
+  imgSrc.push('http://localhost:*');
+}
+const csp = [
+  `default-src ${defaultSrc.join(' ')};`,
+  `script-src ${scriptSrc.join(' ')};`,
+  `connect-src ${connectSrc.join(' ')};`,
+  `style-src ${styleSrc.join(' ')};`,
+  `font-src ${fontSrc.join(' ')};`,
+  `img-src ${imgSrc.join(' ')};`,
+  `child-src ${childSrc.join(' ')};`,
+].join('\n');
 ---
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+  http-equiv="Content-Security-Policy"
+  content={csp}
+>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" /> -->
